@@ -1,25 +1,8 @@
-# Logs
-logs
-*.log
-.DS_Store
-
-npm-debug.log*
-
-# Dependency directory
 node_modules
+# dist
+dist_dev
 
-# Optional npm cache directory
-.npm
-
-#IDEs
-.idea
-
-#config files
-ormconfig.json
-src/config.ts
-
-# code testing coverage
-coverage
-
-
-dist/*
+.vscode
+logs
+.env.prod
+package-lock.json

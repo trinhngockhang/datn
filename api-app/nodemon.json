@@ -1,6 +1,12 @@
 {
-  "watch": ["src"],
-  "ext": "ts",
-  "ignore": ["src/**/*.spec.ts"],
-  "exec": "node ./index"
+  "verbose": true,
+  "ignore": [
+    "node_modules",
+    "dist",
+    "dist_dev",
+    "migration",
+    "logs",
+    "test",
+    "fake_data"
+  ]
 }

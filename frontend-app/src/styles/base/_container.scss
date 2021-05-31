@@ -1,0 +1,57 @@
+.container {
+  max-width: $container;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 65px;
+  padding-right: 65px;
+}
+
+.container-fluid {
+  max-width: $container-fluid;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 30px;
+  padding-right: 30px;
+  @include mq(lg) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+.icon-popular-category{
+  width: 50px;
+  height: 50px;
+  border-radius: 70%;
+}
+.text-popular-category{
+  text-align: center;
+  margin: 12px 0px 16px;
+  padding: 0px 12px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font-size: 13px;
+  line-height: 20px;
+  color: #000;
+}
+
+.header-shop{
+  width: 100%;
+  height: 200px;
+  background-image: url('https://salt.tikicdn.com/ts/sellercenterFE/af/03/9b/57f855e860180c28a25949bce95c1266.png');
+}
+
+.heading-shop-container{
+  padding: 2rem;
+ 
+}
+.heading-shop-img{
+  max-width: 100px;
+  border-radius: 50%;
+}
+.heading-logo{
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+}
