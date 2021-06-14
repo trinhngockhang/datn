@@ -13,38 +13,20 @@ export default function ProductDetailTabOne() {
           <TabPane tab="Description" key="1">
             <div className="product-detail-tab-item -description">
               <p className="tab-des--bold">
-                Nam tempus turpis at metus scelerisque placerat nulla deumantos
-                solicitud felis. Pellentesque diam dolor, elementum etos
-                lobortis des mollis ut risus. Sedcus faucibus an sullamcorper
-                mattis drostique des commodo pharetras loremos.
+              Chất liệu cao cấp mang lại cảm giác dễ chịu vô cùng, tự tin xuống phố đi làm.
+
+Mang hơi hướng thời thượng và phong cách mới cùng nhiều set đồ khác nhau.
               </p>
-              <h5 className="tab-title">Products Infomation</h5>
+              <h5 className="tab-title">Thông tin sản phẩm</h5>
               <p className="tab-des">
-                A Pocket PC is a handheld computer, which features many of the
-                same capabilities as a modern PC. These handy little devices
-                allow individuals to retrieve and store e-mail messages, create
-                a contact file, coordinate appointments, surf the internet,
-                exchange text messages and more. Every product that is labeled
-                as a Pocket PC must be accompanied with specific software to
-                operate the unit and must feature a touchscreen and touchpad. As
-                is the case with any new technology product, the cost of a
-                Pocket PC was substantial during it’s early release. For
-                approximately $700.00, consumers could purchase one of
-                top-of-the-line Pocket PCs in 2003. These days, customers are
-                finding that prices have become much more reasonable now that
-                the newness is wearing off. For approximately $350.00, a new
-                Pocket PC can now be purchased.
+              Áo thun nữ thiết kế GUMAC  được thiết kế với chất liệu êm ái, nhẹ nhàng, thoáng mát không gây cảm giác khó chịu khi mặc. Kiểu dáng mang đến nét duyên dáng, thanh lịch cho bạn gái.
+Thiết kế tôn lên những đường nét quyến rũ, cuốn hút, là lựa chọn không thể bỏ qua của các bạn nữ cho các buổi đi chơi, dã ngoại cuối tuần.
+Nhờ vào thiết kế thanh lịch sản phẩm hứa hẹn sẽ cùng bạn tỏa sáng trên mọi bước chân bạn qua, dù là chốn văn phòng, góc phố cuối tuần hay trong những bữa tiệc sang trọng, bạn sẽ tỏa sáng theo cách riêng của mình.
+Màu sắc tươi sáng, nổi bật lôi cuốn đầy mê hoặc cho nàng thêm xinh xắn rạng ngời mỗi khi diện sản phẩm
               </p>
-              <h5 className="tab-title">Material used</h5>
+              <h5 className="tab-title">Lời nhắn</h5>
               <p className="tab-des">
-                Polyester is deemed lower quality due to its none natural
-                quality’s. Made from synthetic materials, not natural like wool.
-                Polyester suits become creased easily and are known for not
-                being breathable. Polyester suits tend to have a shine to them
-                compared to wool and cotton suits, this can make the suit look
-                cheap. The texture of velvet is luxurious and breathable. Velvet
-                is a great choice for dinner party jacket and can be worn all
-                year round.
+              Chọn sản phẩm tốt, chọn cuộc sống thanh lịch mà vẫn thật thoải mái, chọn GU cho riêng mình mà siêu tiết kiệm. Hãy tự tin làm đẹp chính mình để tạo nên cuộc sống muôn màu và thú vị nhất bạn nhé.
               </p>
             </div>
           </TabPane>

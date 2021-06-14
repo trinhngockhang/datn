@@ -41,7 +41,7 @@ export default function Slider({ containerType }) {
             <Col className="gutter-row" span={24} sm={8} style={{paddingLeft: '0.8rem'}}>
               <img
               style={{width: '100%', height: '100%'}}
-              src="https://salt.tikicdn.com/cache/w408/ts/banner/69/9a/36/dcff148edf2a3918a8ac974d4b75cb20.png.jpg"></img>
+              src="https://photos2.vitaminspy.com/datn/dcff148edf2a3918a8ac974d4b75cb20.png.jpeg"></img>
             </Col>
             </Row>
       </Container>

@@ -66,22 +66,22 @@ export default function shopInfo() {
                   <Col span={12} md={12}>
                     <p>
                       {" "}
-                      <i className="icon_house" /> Sản phẩm:
+                      <i className="icon_house" /> Sản phẩm: 2
                     </p>
                     <br />
                     <p>
                       {" "}
-                      <i className="social_rss_square" /> Số người theo dõi:{" "}
+                      <i className="social_rss_square" /> Số người theo dõi:{" "} 3
                     </p>
                   </Col>
                   <Col span={12} md={12}>
                     <p>
                       {" "}
-                      <i className="icon_star" /> Đánh giá:
+                      <i className="icon_star" /> Đánh giá: 4.5
                     </p>
                     <br />
                     <p>
-                      <i className="icon_tag" /> Tham gia:{" "}
+                      <i className="icon_tag" /> Tham gia:{" "} 10-03-2021
                     </p>
                   </Col>
                 </Row>
@@ -115,7 +115,7 @@ export default function shopInfo() {
               >
                 <img
                   style={{ width: "100%", height: "100%" }}
-                  src="https://salt.tikicdn.com/cache/w408/ts/banner/69/9a/36/dcff148edf2a3918a8ac974d4b75cb20.png.jpg"
+                  src="https://photos2.vitaminspy.com/datn/dcff148edf2a3918a8ac974d4b75cb20.png.jpeg"
                 ></img>
               </Col>
             </Row>

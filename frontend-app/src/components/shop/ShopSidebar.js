@@ -56,7 +56,7 @@ function ShopSidebar(props) {
                 }}
               >
                 <i className="icon_document_alt" />
-                All Category
+                Tất cả
               </a>
             </Link>
           </li>
@@ -92,7 +92,7 @@ function ShopSidebar(props) {
         >
           <Option value="all">
             <i className="icon_document_alt" />
-            All Category
+            Tất cả
           </Option>
           {categories &&
             categories.map((item, index) => (

@@ -43,9 +43,9 @@ function ProductDetailContentOne({
     <div className="product-detail-content-one">
       <h3>{data.name}</h3>
       <div className="product-detail-content-one-rate">
-        <Rate disabled defaultValue={data.rate} />
+        <Rate disabled defaultValue={4.5} />
         <span className="product-detail-content-one-review-count">
-          - 5 Reviews
+          - 5 Nhận xét
         </span>
       </div>
       <div className="product-detail-content-one-price">
@@ -59,9 +59,13 @@ function ProductDetailContentOne({
         )}
       </div>
       <p className="product-detail-content-one-description">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi illo
-        possimus quae tenetur. Porro aliquam quaerat dolorum pariatur molestias
-        commodi ipsa
+      Áo thun mang cá tính năng động trẻ trung, thần thái riêng biệt.
+
+Định hình phong cách tươi mới, năng động hiện đại trẻ trung.
+
+Sản phẩm dành cho nhiều lứa tuổi, có thể mặc đi bất cứ nơi đâu và lúc nào.
+
+Chất liệu cao cấp mang lại cảm giác dễ chịu vô cùng, tự tin xuống phố đi làm.
       </p>
       {showCountdown && (
         <>
@@ -112,22 +116,25 @@ function ProductDetailContentOne({
         </>
       )}
       <div className="product-detail-content-one-variation">
-        {data.size && (
-          <div className="variation-item -size">
-            <>
-              <p>Size:</p>
-              <Radio.Group onChange={onChooseSize} defaultValue="a">
-                {data.size.map((item, index) => (
-                  <Radio.Button key={index} value={item.name}>
-                    {item.name}
-                  </Radio.Button>
-                ))}
-              </Radio.Group>
-            </>
-          </div>
-        )}
+        {data.varians &&
+          data.varians.map((varian) => (
+            <div className="variation-item -size">
+              <>
+                <p>{varian.name}:</p>
+                <Radio.Group onChange={onChooseSize} defaultValue="a">
+                  {varian.options.map((item, index) => (
+                    <Radio.Button key={index} value={item}
+                    // style={{ backgroundColor: varian.name == 'Color' ? item : null }}
+                    >
+                      {item}
+                    </Radio.Button>
+                  ))}
+                </Radio.Group>
+              </>
+            </div>
+          ))}
 
-        {data.variation && (
+        {/* {data.variation && (
           <div className="variation-item -color">
             <>
               <p>Color:</p>
@@ -142,7 +149,7 @@ function ProductDetailContentOne({
               </Radio.Group>
             </>
           </div>
-        )}
+        )} */}
       </div>
       <div className="product-detail-content-one-actions">
         <QuantitySelector
@@ -161,7 +168,7 @@ function ProductDetailContentOne({
           type="link"
           danger
         >
-          Add to cart
+          Thêm vào giỏ
         </Button>
       </div>
       {!hideGuaranteed && <ProductGuaranteed />}
