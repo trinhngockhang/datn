@@ -23,5 +23,27 @@ services:
       - dbmysql
     links:
       - dbmysql
+  shopapi:
+    image: shopapi
+    build:
+      context: ./api-shop-admin
+    restart: always
+    ports:
+      - 3002:3002
+    depends_on:
+      - dbmysql
+    links:
+      - dbmysql
+  adminapi:
+    image: adminapi
+    build:
+      context: ./api-system-admin
+    restart: always
+    ports:
+      - 3004:3004
+    depends_on:
+      - dbmysql
+    links:
+      - dbmysql
 volumes:
   db_data: {}
