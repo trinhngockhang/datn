@@ -169,133 +169,30 @@ export default defineConfig({
                 // },
               ],
             },
-            // {
-            //   path: '/profile',
-            //   name: 'profile',
-            //   icon: 'profile',
-            //   routes: [
-            //     {
-            //       path: '/',
-            //       redirect: '/profile/basic',
-            //     },
-            //     {
-            //       name: 'basic',
-            //       icon: 'smile',
-            //       path: '/profile/basic',
-            //       component: './profile/basic',
-            //     },
-            //     {
-            //       name: 'advanced',
-            //       icon: 'smile',
-            //       path: '/profile/advanced',
-            //       component: './profile/advanced',
-            //     },
-            //   ],
-            // },
-            // {
-            //   name: 'result',
-            //   icon: 'CheckCircleOutlined',
-            //   path: '/result',
-            //   routes: [
-            //     {
-            //       path: '/',
-            //       redirect: '/result/success',
-            //     },
-            //     {
-            //       name: 'success',
-            //       icon: 'smile',
-            //       path: '/result/success',
-            //       component: './result/success',
-            //     },
-            //     {
-            //       name: 'fail',
-            //       icon: 'smile',
-            //       path: '/result/fail',
-            //       component: './result/fail',
-            //     },
-            //   ],
-            // },
-            // {
-            //   name: 'exception',
-            //   icon: 'warning',
-            //   path: '/exception',
-            //   routes: [
-            //     {
-            //       path: '/',
-            //       redirect: '/exception/403',
-            //     },
-            //     {
-            //       name: '403',
-            //       icon: 'smile',
-            //       path: '/exception/403',
-            //       component: './exception/403',
-            //     },
-            //     {
-            //       name: '404',
-            //       icon: 'smile',
-            //       path: '/exception/404',
-            //       component: './exception/404',
-            //     },
-            //     {
-            //       name: '500',
-            //       icon: 'smile',
-            //       path: '/exception/500',
-            //       component: './exception/500',
-            //     },
-            //   ],
-            // },
-            // {
-            //   name: 'account',
-            //   icon: 'user',
-            //   path: '/account',
-            //   routes: [
-            //     {
-            //       path: '/',
-            //       redirect: '/account/center',
-            //     },
-            //     {
-            //       name: 'center',
-            //       icon: 'smile',
-            //       path: '/account/center',
-            //       component: './account/center',
-            //     },
-            //     {
-            //       name: 'settings',
-            //       icon: 'smile',
-            //       path: '/account/settings',
-            //       component: './account/settings',
-            //     },
-            //   ],
-            // },
-            // {
-            //   name: 'editor',
-            //   icon: 'highlight',
-            //   path: '/editor',
-            //   routes: [
-            //     {
-            //       path: '/',
-            //       redirect: '/editor/flow',
-            //     },
-            //     {
-            //       name: 'flow',
-            //       icon: 'smile',
-            //       path: '/editor/flow',
-            //       component: './editor/flow',
-            //     },
-            //     {
-            //       name: 'mind',
-            //       icon: 'smile',
-            //       path: '/editor/mind',
-            //       component: './editor/mind',
-            //     },
-            //     {
-            //       name: 'koni',
-            //       icon: 'smile',
-            //       path: '/editor/koni',
-            //       component: './editor/koni',
-            //     },
-            //   ],
-            // },
+            {
+              path: '/list',
+              icon: 'table',
+              name: 'Order',
+              routes: [
+                { 
+                  path: '/',
+                  redirect: '/list/table-list',
+                },
+                {
+                  name: 'Manage orders',
+                  icon: 'table',
+                  path: '/list/productss',
+                  component: './list/search',
+                },
+                {
+                  name: 'Statistic',
+                  icon: 'table',
+                  path: '/list/productsss',
+                  component: './list/search',
+                },
+               
+              ]},
+              
             {
               component: '404',
             },

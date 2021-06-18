@@ -7,7 +7,7 @@ const proSettings = {
   fixedHeader: false,
   fixSiderbar: true,
   colorWeak: false,
-  title: 'K-Ecommerce',
+  title: 'Ecommerce',
   pwa: false,
   iconfontUrl: '',
 };

@@ -4,8 +4,9 @@ import uuidv4 from 'uuid/v4';
 
 export const getItem = async({limit, sorts, filters}, shop_id) => {
   const params = [shop_id];
-  let sql = `SELECT * FROM item
-  WHERE shop_id = ?`;
+  let sql = `SELECT item.*, C.name as categoryName FROM item, category C
+  WHERE shop_id = ?
+  AND item.category_id = C.id`;
   let countSql = `SELECT count(I.id) from item I
   WHERE shop_id = ?
   `;
@@ -20,9 +21,10 @@ export const getItem = async({limit, sorts, filters}, shop_id) => {
 
   const finalResult = await Promise.all(result.map((item) => {
       return new Promise(async (resole, reject) =>{
-        const sql = `SELECT V.name, IMV.value from varian V, item_model IM, item_model_varian IMV, item I
+        const sql = `SELECT V.name, IMV.value, C.name as categoryName from varian V, item_model IM, item_model_varian IMV, item I, category C
         WHERE I.id = IM.item_id
         AND IM.id = IMV.item_model_id
+        AND C.id = i.category_id
         AND IMV.varian_id = V.id
         AND I.id = ?
         `;

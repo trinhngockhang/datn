@@ -1,6 +1,8 @@
 import axios from "axios";
 import localStorage from "localStorage";
-const URL = { API: 'http://localhost:3003/' };
+//const URL = { API: 'http://localhost:3003/' };
+const URL = { API: 'https://app-api.k-ecommerce.xyz/' };
+
 
 export const axiosApiAuthen = async function (baseURL) {
   return new Promise(async (resolve, reject) => {

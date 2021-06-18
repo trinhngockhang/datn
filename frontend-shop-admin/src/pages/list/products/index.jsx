@@ -119,9 +119,8 @@ const TableList = () => {
     },
     {
       title: 'Category',
-      dataIndex: 'hasSize',
+      dataIndex: 'categoryName',
       sorter: true,
-      render: (hasSize) => <span>{hasSize ? 'Has size' : 'Not has size'}</span>,
     },
     {
       title: 'Varians',
@@ -198,7 +197,7 @@ const TableList = () => {
         }}
         toolBarRender={() => [
           <Button type="primary" onClick={() => handleOnAdd()}>
-            Add Template
+            Create product
           </Button>,
         ]}
         request={(params, sorter, filter) => queryItem({ ...params, sorter, filter })}
