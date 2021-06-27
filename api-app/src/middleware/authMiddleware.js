@@ -9,8 +9,10 @@ export const authMiddleware = async (req, res, next) => {
     const token = authorization.split(' ')[1];
     if (token) {
       try {
+        console.log(token)
         const tokenDecoded = await jwtUtil.verifyToken(token);
         req.isLogged = true;
+        console.log(tokenDecoded)
         req.userId = tokenDecoded.id;
         req.token = token;
       } catch (error) {

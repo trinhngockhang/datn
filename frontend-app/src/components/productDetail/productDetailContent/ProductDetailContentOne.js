@@ -9,36 +9,54 @@ import { addToCart } from "../../../redux/actions/cartActions";
 import { checkAvaiableQuantityToAdd } from "../../../common/shopUtils";
 import QuantitySelector from "../../controls/QuantitySelector";
 import ProductGuaranteed from "../elements/ProductGuaranteed";
+import ShopInfoContent from "../../../components/shop/ShopInfo";
+import { getAuthen, postAuthen } from "../../../util/request";
 
 function ProductDetailContentOne({
   data,
   onAddedToCart,
   hideGuaranteed,
+  setData,
   quantityControllerNoRound,
   showCountdown,
 }) {
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
-  const [currentColor, setCurrentColor] = useState("none");
-  const [currentSize, setCurrentSize] = useState("none");
+  const [property, setProperty] = useState({});
   const globalState = useSelector((state) => state.globalReducer);
   const cartState = useSelector((state) => state.cartReducer);
   const avaiableQuantity = checkAvaiableQuantityToAdd(cartState, data);
   const { currency, locales } = globalState.currency;
-  const onAddProductToCart = (data) => {
+  const onAddProductToCart = async (data) => {
     if (avaiableQuantity === 0) {
       return;
     }
-    dispatch(addToCart(data, quantity, currentColor, currentSize));
+    if(cartState){
+      if(cartState[0]){
+        if(cartState[0].shop_id != data.shop_id){
+          message.error("Bạn cần xoá cart của nhà cung cấp khác", 3000);
+          return;
+        }
+      }
+    }
+    data.variation = property;
+    dispatch(addToCart(data, quantity));
     onAddedToCart && onAddedToCart();
-    message.success("Product added to cart successfully");
+    message.success("Thêm sản phẩm thành công");
   };
-  const onChooseSize = (e) => {
-    setCurrentSize(e.target.value);
-  };
-  const onChooseColor = (e) => {
-    setCurrentColor(e.target.value);
-  };
+  const handleProperty = async (varian, value) => {
+    const properties = {...property};
+    properties[varian] = value;
+    if(Object.keys(properties).length == data.varians.length){
+      const res = await postAuthen('/item/model', {
+        varians: properties,
+        id: data.id
+      });
+      const newData = res.data.data;
+      setData({...data, price: newData.price, inventory: newData.inventory, itemModelId: res.data.data.id });
+    }
+    setProperty(properties)
+  }
   return (
     <div className="product-detail-content-one">
       <h3>{data.name}</h3>
@@ -59,13 +77,7 @@ function ProductDetailContentOne({
         )}
       </div>
       <p className="product-detail-content-one-description">
-      Áo thun mang cá tính năng động trẻ trung, thần thái riêng biệt.
-
-Định hình phong cách tươi mới, năng động hiện đại trẻ trung.
-
-Sản phẩm dành cho nhiều lứa tuổi, có thể mặc đi bất cứ nơi đâu và lúc nào.
-
-Chất liệu cao cấp mang lại cảm giác dễ chịu vô cùng, tự tin xuống phố đi làm.
+          {data.short_description}
       </p>
       {showCountdown && (
         <>
@@ -121,9 +133,10 @@ Chất liệu cao cấp mang lại cảm giác dễ chịu vô cùng, tự tin x
             <div className="variation-item -size">
               <>
                 <p>{varian.name}:</p>
-                <Radio.Group onChange={onChooseSize} defaultValue="a">
+                <Radio.Group defaultValue="a">
                   {varian.options.map((item, index) => (
                     <Radio.Button key={index} value={item}
+                    onChange={() => handleProperty(varian.id, item)}
                     // style={{ backgroundColor: varian.name == 'Color' ? item : null }}
                     >
                       {item}
@@ -161,7 +174,7 @@ Chất liệu cao cấp mang lại cảm giác dễ chịu vô cùng, tự tin x
         />
         <Button
           onClick={() => onAddProductToCart(data)}
-          disabled={avaiableQuantity === 0}
+          disabled={avaiableQuantity === 0 || data.varians? data?.varians.length != Object.keys(property)?.length: false }
           className={`product-detail-content-one-atc ${classNames({
             disabled: avaiableQuantity === 0,
           })}`}
@@ -171,7 +184,7 @@ Chất liệu cao cấp mang lại cảm giác dễ chịu vô cùng, tự tin x
           Thêm vào giỏ
         </Button>
       </div>
-      {!hideGuaranteed && <ProductGuaranteed />}
+    
     </div>
   );
 }

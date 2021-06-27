@@ -1,10 +1,10 @@
 {
     "apps": [
       {
-        "name": "node-start",
+        "name": "Image service",
         "script": "./dist/index.js",
         "env": {
-          "PORT": 3002
+          "PORT": 5000
         }
       }
     ]

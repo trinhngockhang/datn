@@ -11,7 +11,7 @@ export const throwAsNext = f => async (req, res, next) => {
 // eslint-disable-next-line no-unused-vars
 export const errorHandler = (error, req, res, next) => {
   if (typeof error === 'string') {
-    res.status(500).json({ message: error });
+    res.status(400).json({ message: error });
     logger.error(error);
   } else {
     res.status(error.status || 500).json(error);

@@ -15,7 +15,7 @@ export const signUp = async ({ username, passwordHash, name }) => {
 };
 
 export const checkUserExistByEmail = async (email) => {
-  const sql = 'SELECT email FROM user WHERE email = ?';
+  const sql = 'SELECT id, email FROM user WHERE email = ?';
   const result = await dbUtil.query(sql, [email]);
   if (result.length > 0) {
     return result[0];
@@ -50,20 +50,26 @@ export const refreshToken = async (oldRefreshToken) => {
 
 export const loginByGoogle = async (googleToken) => {
   const info = await googleUtil.getInfo(googleToken);
+  console.log(info);
   if(info){
     const checkExist = await checkUserExistByEmail(info.email);
     if(checkExist){
-      return await jwtUtil.generateToken({
-        id: checkExist.id,
-      });
+      console.log(checkExist);
+      const newToken = await jwtUtil.generateToken({id: checkExist.id});
+      return {
+        token: newToken,
+        email: info.email
+      }
     } else {
       // create new user
-      const sql = 'INSERT INTO user (id, name, email) VALUES(?,?,?)';
+      const sql = 'INSERT INTO user (id, name, email, avatar) VALUES(?,?,?, ?)';
       const id = uuidv4();
-      await dbUtil.execute(sql, [id, info.name, info.email]);
-      return await jwtUtil.generateToken({
-        id,
-      });
+      await dbUtil.execute(sql, [id, info.name, info.email, info.picture]);
+      const newToken = await jwtUtil.generateToken({id});
+      return {
+        token: newToken,
+        email: info.email
+      }
     }
   } else{
     Promise.reject(ERRORS.USER_NOTFOUND_ERROR);

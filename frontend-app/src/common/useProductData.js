@@ -13,6 +13,9 @@ export default function useProductData(productData, category, query) {
       if(query.shop_id){
         params['filters[shop_id]'] = query.shop_id;
       }
+      if(query.id_exist){
+        params['filters[id_exist]'] = query.id_exist;
+      }
     }
     const res = await getAuthen('/item', {params});
     setData(res.data.data.data);

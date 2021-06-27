@@ -9,6 +9,8 @@ import { Button } from "antd/lib/radio";
 import ShopLayout from "../../../components/shop/ShopLayout";
 import { useSelector } from "react-redux";
 import useProductData from "../../../common/useProductData";
+import ShopContent from "../../../components/shop/ShopInfo";
+import ShopInfoContent from "../../../components/shop/ShopInfo";
 
 export default function shopInfo() {
   const router = useRouter();
@@ -26,7 +28,7 @@ export default function shopInfo() {
   return (
     <LayoutOne title={slug} clearSpaceTop>
       <div className="product-detail-one">
-        <div className="product-detail-one-top">
+        <div className="product-detail-one-top-shop" style={{marginTop: '3rem'}}>
           <Container>
             {/* <Row >
               <Col span={24} md={24}>
@@ -40,53 +42,7 @@ export default function shopInfo() {
               <Col span={24} md={12}>
               </Col>
             </Row> */}
-            <Row gutter={30}>
-              <Col span={8} md={8}>
-                <Row
-                  gutter={12}
-                  style={{ padding: "1rem" }}
-                  className="heading-logo"
-                >
-                  <Col span={7} md={7}>
-                    <img
-                      className="heading-shop-img"
-                      src="https://cf.shopee.vn/file/bdade9af41692639e4101b8d5c7a0861_tn"
-                    ></img>
-                    <Button style={{ marginTop: "0.2rem" }}>+Theo dõi </Button>
-                  </Col>
-                  <Col span={12} md={12}>
-                    <h3>Khang Khang</h3>
-                    <p>Hoạt động</p>
-                  </Col>
-                </Row>
-              </Col>
-
-              <Col span={16} md={16}>
-                <Row gutter={[16, 40]}>
-                  <Col span={12} md={12}>
-                    <p>
-                      {" "}
-                      <i className="icon_house" /> Sản phẩm: 2
-                    </p>
-                    <br />
-                    <p>
-                      {" "}
-                      <i className="social_rss_square" /> Số người theo dõi:{" "} 3
-                    </p>
-                  </Col>
-                  <Col span={12} md={12}>
-                    <p>
-                      {" "}
-                      <i className="icon_star" /> Đánh giá: 4.5
-                    </p>
-                    <br />
-                    <p>
-                      <i className="icon_tag" /> Tham gia:{" "} 10-03-2021
-                    </p>
-                  </Col>
-                </Row>
-              </Col>
-            </Row>
+           <ShopInfoContent shopId={slug}/>
           </Container>
           <br />
           <Container style={{ marginTop: "3rem" }}>
@@ -132,6 +88,7 @@ export default function shopInfo() {
           ></ShopLayout>
         </div>
       </div>
+      <br/>
     </LayoutOne>
   );
 }

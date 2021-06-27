@@ -4,8 +4,6 @@ export const addToCart = (product, quantity, color, size) => ({
   type: CART.ADD_TO_CART,
   product,
   quantity,
-  color,
-  size,
 });
 
 export const removeFromCart = (cartId) => ({

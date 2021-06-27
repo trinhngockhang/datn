@@ -29,7 +29,7 @@ export default function pid() {
       title={foundProduct && capitalizeFirstLetter(foundProduct.name)}
       clearSpaceTop
     >
-      {foundProduct && <ProductDetailOne data={foundProduct} />}
+      {foundProduct && <ProductDetailOne data={foundProduct} setData={setFoundProduct}/>}
     </LayoutOne>
   );
 }

@@ -8,7 +8,9 @@ const router = Router();
 // route
 // get item
 
-router.post('/', throwAsNext(controller.createOrder));
+router.get('/shop/:id', throwAsNext(controller.getShopInfo));
+router.get('/', authMiddleware, requireLogin, throwAsNext(controller.getOrders));
+router.post('/', authMiddleware, requireLogin, throwAsNext(controller.createOrder));
 
 // export
 export default { path, router };

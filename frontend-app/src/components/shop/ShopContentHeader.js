@@ -15,19 +15,8 @@ function ShopContentHeader({ data, productPerPage }) {
       <div className="shop-content__header-showing">
       </div>
       <div className="shop-content__header-filter">
-        <p>Filter by:</p>
-        <Select
-          className="shop-content__header-filter__select"
-          defaultValue={shopState.sort}
-          style={{ width: 250 / 16 + "em" }}
-          onChange={handleChange}
-        >
-          <Option value="default">Default</Option>
-          <Option value="lowHigh">Price: Low to High</Option>
-          <Option value="highLow">Price: High to Low</Option>
-          <Option value="az">A to Z</Option>
-          <Option value="za">Z to A</Option>
-        </Select>
+      
+      
       </div>
     </div>
   );

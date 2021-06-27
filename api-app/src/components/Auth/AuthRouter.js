@@ -10,7 +10,7 @@ const router = Router();
 // --- Get Me ---
 router.get('/getme', authMiddleware, requireLogin, throwAsNext(controller.getMe));
 // --- Login ---
-router.post('/login-google', loginValidator, throwAsNext(controller.loginByGoogle));
+router.post('/login-google', throwAsNext(controller.loginByGoogle));
 // registerSubrouter
 
 // export

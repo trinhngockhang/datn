@@ -1,7 +1,10 @@
 import axios from "axios";
 import localStorage from "localStorage";
-//const URL = { API: 'http://localhost:3003/' };
-const URL = { API: 'https://app-api.k-ecommerce.xyz/' };
+import * as useAction from '../redux/actions/userAction';
+import { useSelector, useDispatch } from "react-redux";
+
+const URL = { API: 'http://localhost:3003/' };
+// const URL = { API: 'https://app-api.k-ecommerce.xyz/' };
 
 
 export const axiosApiAuthen = async function (baseURL) {
@@ -131,7 +134,7 @@ export const axiosLogin = async (input) => {
 };
 
 export const axiosLoginGoogle = async (token) => {
-  var url = "/auth/login/google";
+  var url = "/auth/login-google";
   var config = {
     method: "post",
     url,
@@ -143,10 +146,8 @@ export const axiosLoginGoogle = async (token) => {
   try {
     const res = await axiosApi(config);
     localStorage.setItem("token", res.data.data.token);
-    return {
-      code: res.data.code,
-      isAccountExpired: res.data.data.isAccountExpired,
-    };
+    console.log(res.data.data);
+    return res.data.data;
   } catch (e) {
     return false;
   }

@@ -43,7 +43,9 @@ export const refreshToken = async (req, res) => {
 };
 
 export const loginByGoogle = async (req, res) => {
-  const { googleToken } = req.body;
-  const token = await dbAccess.loginByGoogle(googleToken);
-  res.send(buildSuccessResponse(token));
+  const { token } = req.body;
+  console.log(req.body);
+  const newtoken = await dbAccess.loginByGoogle(token);
+  console.log(newtoken);
+  res.send(buildSuccessResponse(newtoken));
 }

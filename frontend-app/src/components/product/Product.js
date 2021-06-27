@@ -163,9 +163,9 @@ function Product({ data, productStyle }) {
                 </Button>
               </Tooltip>
 
-              <Button onClick={showModal} className="product-qv">
+              {/* <Button onClick={showModal} className="product-qv">
                 Quick view
-              </Button>
+              </Button> */}
             </>
           ) : null}
         </div>
@@ -195,19 +195,7 @@ function Product({ data, productStyle }) {
                 <span>{formatCurrency(data.price, 'vi', 'VND')}</span>
               )}
             </div>
-            {!productStyle || productStyle === "one" ? (
-              <Tooltip title="Add to cart">
-                <Button
-                  disabled={avaiableQuantity === 0}
-                  className="product-atc"
-                  type="text"
-                  shape="circle"
-                  onClick={() => onAddToCart(data)}
-                >
-                  <i className="icon_bag_alt" />
-                </Button>
-              </Tooltip>
-            ) : null}
+        
           </div>
           {productStyle === "three" ? (
             <div className="product-button-group">
@@ -256,7 +244,7 @@ function Product({ data, productStyle }) {
         visible={visible}
         width={850}
       >
-        <ShopQuickView setModalVisible={setVisible} data={data} />
+        {/* <ShopQuickView setModalVisible={setVisible} data={data} /> */}
       </Modal>
     </>
   ) : (

@@ -11,10 +11,14 @@ import MenuSidebar from "./MenuSidebar";
 import SearchBar from "./SearchBar";
 import { getTotalProductInCart } from "../../../common/shopUtils";
 import Container from "../../other/Container";
+import GoogleLogin from "react-google-login";
+import LoginButton from "../../../common/loginButton";
 
 function Menu({ containerType }) {
   const cartState = useSelector((state) => state.cartReducer);
   const wishlistState = useSelector((state) => state.wishlistReducer);
+  const userState = useSelector((state) => state.userReducer);
+  const user = userState.user;
   const [cartSidebarOpen, setCartSidebarOpen] = useState(false);
   const [menuSidebarOpen, setMenuSidebarOpen] = useState(false);
   const [wishlistSidebarOpen, setWishlistSidebarOpen] = useState(false);
@@ -38,7 +42,7 @@ function Menu({ containerType }) {
             <div className="menu-logo">
               <Link href={process.env.PUBLIC_URL + "/"}>
                 <a>
-                <h2 style={{color: '#ffffff'}}>K-Ecommerce</h2>
+                  <h2 style={{ color: "#ffffff" }}>K-Ecommerce</h2>
                 </a>
               </Link>
             </div>
@@ -47,11 +51,8 @@ function Menu({ containerType }) {
               placeholder="What are you looking for ?"
             />
             <div className="menu-functions">
-              <Button>
-                <Link href="#">
-                  <a>Join now</a>
-                </Link>
-              </Button>
+              {!user ? <LoginButton /> : <></>}
+
               <div
                 className="menu-function-item"
                 onClick={() => setWishlistSidebarOpen(true)}

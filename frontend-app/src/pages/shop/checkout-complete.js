@@ -15,8 +15,8 @@ export default function checkoutComplete() {
       <Container>
         <div className="checkout-complete">
           <div className="checkout-complete-summary">
-            <h3>Congratulation! You’ve completed payment.</h3>
-            <div className="checkout-complete-summary__table">
+            <h3>Chúc mừng, bạn đã hoàn thành đơn hàng</h3>
+            {/* <div className="checkout-complete-summary__table">
               <div className="checkout-complete-summary__table-item">
                 <h5>Order Number</h5>
                 <p>120</p>
@@ -33,9 +33,9 @@ export default function checkoutComplete() {
                 <h5>Payment methods</h5>
                 <p>Check payment</p>
               </div>
-            </div>
+            </div> */}
           </div>
-          <div className="checkout-complete-details">
+          {/* <div className="checkout-complete-details">
             <h3>Order Details</h3>
             <table>
               <thead>
@@ -68,7 +68,7 @@ export default function checkoutComplete() {
                 </tr>
               </tbody>
             </table>
-          </div>
+          </div> */}
         </div>
       </Container>
     </LayoutOne>

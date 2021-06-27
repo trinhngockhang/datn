@@ -12,6 +12,8 @@ function ProductDetailImageOne({ imageData }) {
   console.log({imageData});
   const slider2Settings = {
     arrows: false,
+    infinite: true,
+    slidesToScroll: 1,
     slidesToShow: imageData? imageData.length:1,
     centerMode: true,
     centerPadding: "0px",
@@ -58,13 +60,14 @@ function ProductDetailImageOne({ imageData }) {
           >
             <div className="product-detail-image-one-small">
               <Slider
+                id="slide-product"
                 asNavFor={nav1}
                 ref={(c) => setNav2(c)}
                 {...slider2Settings}
               >
                 {imageData &&
                   imageData.map((img, index) => (
-                    <div key={index} className="slider-item">
+                    <div key={index} className="slider-item" data-index={index}>
                       <img
                         src={img}
                         alt="Product image"

@@ -1,4 +1,4 @@
-import { Select } from "antd";
+import { Button, Select } from "antd";
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import React from "react";
@@ -8,11 +8,15 @@ import {
   setGlobalCurrency,
 } from "../../../redux/actions/globalActions";
 import Container from "../../other/Container";
+import localStorage from "localStorage";
+import * as userAction from "../../../redux/actions/userAction";
 
 function TopNav({ containerType }) {
   const { Option } = Select;
   const dispatch = useDispatch();
   const globalState = useSelector((state) => state.globalReducer);
+  const userState = useSelector((state) => state.userReducer);
+  const user = userState.user;
   const onSelectLanguage = (value) => {
     dispatch(setGlobalLanguage(value));
   };
@@ -31,7 +35,6 @@ function TopNav({ containerType }) {
               onChange={onSelectLanguage}
             >
               <Option value="en">English</Option>
-              <Option value="jp">Japanese</Option>
               <Option value="vi">Vietnamese</Option>
             </Select>
             <Select
@@ -41,25 +44,43 @@ function TopNav({ containerType }) {
               onChange={onSelectCurrency}
             >
               <Option value="USD">USD - Dollar</Option>
-              <Option value="JPY">JPY - Yen</Option>
               <Option value="VND">VND - Vietnam dong</Option>
             </Select>
           </div>
           <div className="top-nav-links">
             <div className="top-nav-links__item">
-              <Link href={process.env.PUBLIC_URL + "/#"}>
+              <Link href={process.env.PUBLIC_URL + "/orders"}>
                 <a>
-                  <i className="icon_question_alt2" />
-                  Help
+                  {user ? (
+                    <Button
+                    >
+                      {" "}
+                      Đơn hàng{" "}
+                    </Button>
+                  ) : (
+                    <></>
+                  )}
                 </a>
               </Link>
             </div>
             <div className="top-nav-links__item">
-              <Link href={process.env.PUBLIC_URL + "/#"}>
-                <a>
-                  <i className="icon_gift" /> Offer
-                </a>
-              </Link>
+              <div>
+                <i className="icon_log_out" />
+                {user ? (
+                  <Button
+                    onClick={() => {
+                      console.log("Remote token");
+                      localStorage.removeItem("token");
+                      dispatch(userAction.logout());
+                    }}
+                  >
+                    {" "}
+                    Đăng xuất{" "}
+                  </Button>
+                ) : (
+                  <></>
+                )}
+              </div>
             </div>
           </div>
         </div>
