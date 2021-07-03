@@ -1,6 +1,24 @@
 version: "3.1"
 
 services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.2.0
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment: 
+      - discovery.type=single-node
+  redis:
+    image: redis:latest
+    ports:
+      - 6379:6379
+    restart: always
+  rabbit:
+      image: "rabbitmq:3-management"
+      hostname: "rabbit"
+      ports:
+        - "15672:15672"
+        - "5672:5672"
   dbmysql:
     image: mysql
     command: --default-authentication-plugin=mysql_native_password
@@ -19,8 +37,14 @@ services:
     restart: always
     ports:
       - 3003:3003
+    environment:
+      - DATABASE_URL=mysql://root:ETxGkUcEZM7M22tP5@dbmysql:3306/kecommerce?charset=utf8mb4_unicode_ci&connectionLimit=100&flags=-FOUND_ROWS
+      - REDIS_URL=redis://redis:6379/0
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
     depends_on:
       - dbmysql
+      - rabbit
+      - elasticsearch
     links:
       - dbmysql
   shopapi:
@@ -30,8 +54,14 @@ services:
     restart: always
     ports:
       - 3002:3002
+    environment:
+      - DATABASE_URL=mysql://root:ETxGkUcEZM7M22tP5@dbmysql:3306/kecommerce?charset=utf8mb4_unicode_ci&connectionLimit=100&flags=-FOUND_ROWS
+      - REDIS_URL=redis://redis:6379/0
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
     depends_on:
       - dbmysql
+      - rabbit
+      - elasticsearch
     links:
       - dbmysql
   adminapi:
@@ -39,10 +69,16 @@ services:
     build:
       context: ./api-system-admin
     restart: always
+    environment:
+      - DATABASE_URL=mysql://root:ETxGkUcEZM7M22tP5@dbmysql:3306/kecommerce?charset=utf8mb4_unicode_ci&connectionLimit=100&flags=-FOUND_ROWS
+      - REDIS_URL=redis://redis:6379/0
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
     ports:
-      - 3004:3004
+      - 5001:5001
     depends_on:
       - dbmysql
+      - rabbit
+      - elasticsearch
     links:
       - dbmysql
 volumes:

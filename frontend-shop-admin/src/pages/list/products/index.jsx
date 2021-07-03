@@ -16,15 +16,7 @@ import {
   syncDataToPlatform,
   createTemplate,
 } from './service';
-/**
- * 添加节点
- * @param fields
- */
 
-/**
- * 更新节点
- * @param fields
- */
 
 const { Panel } = Collapse;
 const handleUpdate = async (fields) => {
@@ -89,13 +81,11 @@ const TableList = () => {
   };
 
   const onFinishUpdate = async (values) => {
-    console.log('Received values of form update:', values);
-    console.log('VAIRAN: ', varianOption);
     try {
-      // const res = await updateTemplate(values);
-      // console.log(res);
-      // handleUpdateModalVisible(false);
-      // actionRef.current?.reloadAndRest?.();
+      const res = await updateTemplate(values);
+      console.log(res);
+      handleUpdateModalVisible(false);
+      actionRef.current?.reloadAndRest?.();
     } catch (e) {
       console.log(e);
       message.error('Fail!');
@@ -188,18 +178,8 @@ const TableList = () => {
   return (
     <PageContainer>
       <ProTable
-        headerTitle="
-        Add"
-        actionRef={actionRef}
+       search={false}
         rowKey="id"
-        search={{
-          labelWidth: 120,
-        }}
-        toolBarRender={() => [
-          <Button type="primary" onClick={() => handleOnAdd()}>
-            Create product
-          </Button>,
-        ]}
         request={(params, sorter, filter) => queryItem({ ...params, sorter, filter })}
         columns={columns}
         rowSelection={{
@@ -210,7 +190,7 @@ const TableList = () => {
         <FooterToolbar
           extra={
             <div>
-              已选择{' '}
+             {' '}
               <a
                 style={{
                   fontWeight: 600,
@@ -218,9 +198,9 @@ const TableList = () => {
               >
                 {selectedRowsState.length}
               </a>{' '}
-              项&nbsp;&nbsp;
+              &nbsp;&nbsp;
               <span>
-                服务调用次数总计 {selectedRowsState.reduce((pre, item) => pre + item.callNo, 0)} 万
+               {selectedRowsState.reduce((pre, item) => pre + item.callNo, 0)} 万
               </span>
             </div>
           }
@@ -232,9 +212,10 @@ const TableList = () => {
               actionRef.current?.reloadAndRest?.();
             }}
           >
-            批量删除
+            
+          Remove
           </Button>
-          <Button type="primary">批量审批</Button>
+          <Button type="primary">Update</Button>
         </FooterToolbar>
       )}
       <CreateForm

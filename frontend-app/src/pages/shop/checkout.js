@@ -159,20 +159,6 @@ export default function checkout() {
                             <Input />
                           </Form.Item>
                         </Col>
-                        <Col span={24} md={12}>
-                          <Form.Item
-                            label="Số điện thoại"
-                            name="phone"
-                            rules={[
-                              {
-                                required: true,
-                                message: "Hãy nhập sđt nhận hàng!",
-                              },
-                            ]}
-                          >
-                            <Input />
-                          </Form.Item>
-                        </Col>
                         {
                           paymentMethod == "Thanh toán bằng thẻ" ?
                           <>

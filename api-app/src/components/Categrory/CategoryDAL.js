@@ -1,9 +1,17 @@
 import * as dbUtil from '../../util/databaseUtil';
+import redisUtil from '../../util/redisUtil';
 
 export const getCategory = async () => {
-  const sql = 'SELECT * FROM category';
-  const camps = await dbUtil.query(sql);
-  return camps;
+  const campInRedis = await redisUtil.getAsync('CATEGORY');
+  console.log('CAM', campInRedis);
+  if(campInRedis) return JSON.parse(campInRedis);
+  else {
+    const sql = 'SELECT * FROM category where active= 1';
+    const camps = await dbUtil.query(sql);
+    await redisUtil.setAsync('CATEGORY', JSON.stringify(camps));
+    return camps;
+  }
+  
 };
 
 export const getPopularCategory = async () => {

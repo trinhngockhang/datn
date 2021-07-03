@@ -49,7 +49,7 @@ function SearchBarMobile({ fillData, placeholder }) {
       router.push("/");
     } else {
       router.push({
-        pathname: "/",
+        pathname: "/search",
         query: { q: search },
       });
     }
@@ -57,19 +57,7 @@ function SearchBarMobile({ fillData, placeholder }) {
   return (
     <div className="menu-search">
       <div className="menu-search__form">
-        <Select
-          className="menu-search__form-select"
-          defaultValue={globalState.category}
-          style={{ width: 150 }}
-          onChange={onSelectCateory}
-          value={globalState.category}
-        >
-          {SHOP.category.map((item, index) => (
-            <Option key={index} value={item.name}>
-              {item.name}
-            </Option>
-          ))}
-        </Select>
+
         <div className="menu-search__form-input">
           <AutoComplete
             allowClear
@@ -78,7 +66,6 @@ function SearchBarMobile({ fillData, placeholder }) {
             onSearch={openDropdownOption}
             onBlur={closeDropdownOption}
             onSelect={onSelectOption}
-            options={renderAutoFillItem()}
             placeholder={placeholder}
             filterOption={(inputValue, option) =>
               option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !==

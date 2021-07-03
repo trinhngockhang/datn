@@ -11,11 +11,29 @@
  Target Server Version : 80023
  File Encoding         : 65001
 
- Date: 14/06/2021 14:06:43
+ Date: 03/07/2021 08:36:57
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for admin
+-- ----------------------------
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE `admin` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Records of admin
+-- ----------------------------
+BEGIN;
+INSERT INTO `admin` VALUES (1, 'admin', '$2a$12$T2GdE.Kw4rVzh1lnw7iCjuEED/bIKg6.3C5VSF8MN03eCl3ViOdBy');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for campaign
@@ -54,29 +72,51 @@ CREATE TABLE `category` (
   `icon` varchar(255) DEFAULT NULL,
   `popular` int DEFAULT '2',
   `image_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `active` int DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of category
 -- ----------------------------
 BEGIN;
-INSERT INTO `category` VALUES (1, 'Điện thoại-Máy tính bảng', 'icon-phone', 1, 'https://salt.tikicdn.com/ts/category/93/27/e3/192b0ebe1d4658c51f9931bda62489b2.png');
-INSERT INTO `category` VALUES (2, 'Điện tử - Điện lạnh', 'icon-fridge', 1, 'https://salt.tikicdn.com/ts/category/70/52/b1/31587960ac1eb915a86a5a8202da583a.png');
-INSERT INTO `category` VALUES (3, 'Phụ Kiện -  Thiết bị số', 'icon-fridge', 2, NULL);
-INSERT INTO `category` VALUES (4, 'Laptop - Thiết bị IT', 'icon-fridge', 2, NULL);
-INSERT INTO `category` VALUES (5, 'Máy ảnh - Quay phim', 'icon-fridge', 1, 'https://salt.tikicdn.com/ts/category/c3/a4/87/4584c6298920124cb7da51de157ddac9.png');
-INSERT INTO `category` VALUES (6, 'Điện gia dụng', 'icon-fridge', 1, 'https://salt.tikicdn.com/cache/280x280/ts/product/07/fd/5c/926d3504582fe14233699b20b30eae52.jpg');
-INSERT INTO `category` VALUES (7, 'Nhà cửa đời sống', 'icon-fridge', 1, 'https://salt.tikicdn.com/cache/280x280/ts/product/57/af/35/f3b45e62448dbbd0da40120e48ec9caf.png');
-INSERT INTO `category` VALUES (8, 'Hàng tiêu dùng', 'icon-fridge', 1, 'https://salt.tikicdn.com/ts/category/f6/42/49/6cd7598ae44e5794f39acd16acf71ad9.png');
-INSERT INTO `category` VALUES (9, 'Đồ chơi, Mẹ & Bé', 'icon-fridge', 1, 'https://salt.tikicdn.com/cache/280x280/ts/product/d9/bb/5c/3a1cddcf76ed698337fedec5f57e4d56.jpg');
-INSERT INTO `category` VALUES (10, 'Làm đẹp - Sức khoẻ', 'icon-fridge', 2, NULL);
-INSERT INTO `category` VALUES (11, 'Thời trang - Phụ Kiện', 'icon-fridge', 2, NULL);
-INSERT INTO `category` VALUES (12, 'Thể thao - Dã ngoại', 'icon-fridge', 2, NULL);
-INSERT INTO `category` VALUES (13, 'Xe máy, ô tô, xe đạp', 'icon-fridge', 2, NULL);
-INSERT INTO `category` VALUES (14, 'Hàng quốc tế', 'icon-fridge', 1, 'https://salt.tikicdn.com/ts/category/9d/ba/6f/0c85993f0436f73cdfbababda1dc5595.png');
-INSERT INTO `category` VALUES (15, 'Sách, VPP & Quà tặng', 'icon-fridge', 2, NULL);
-INSERT INTO `category` VALUES (16, 'Voucher - Dịch vụ - Thẻ cào', 'icon-fridge', 2, NULL);
+INSERT INTO `category` VALUES (1, 'Điện thoại-Máy tính bảng 1', 'icon-phone', 1, 'https://salt.tikicdn.com/ts/category/93/27/e3/192b0ebe1d4658c51f9931bda62489b2.png', 1);
+INSERT INTO `category` VALUES (2, 'Điện tử - Điện lạnh', 'icon-fridge', 1, 'https://salt.tikicdn.com/ts/category/70/52/b1/31587960ac1eb915a86a5a8202da583a.png', 1);
+INSERT INTO `category` VALUES (3, 'Phụ Kiện -  Thiết bị số', 'icon-fridge', 2, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1624979191126-1617509309768-521481848.jpeg', 1);
+INSERT INTO `category` VALUES (4, 'Laptop - Thiết bị IT', 'icon-fridge', 2, NULL, 1);
+INSERT INTO `category` VALUES (5, 'Máy ảnh - Quay phim', 'icon-fridge', 1, 'https://salt.tikicdn.com/ts/category/c3/a4/87/4584c6298920124cb7da51de157ddac9.png', 1);
+INSERT INTO `category` VALUES (6, 'Điện gia dụng', 'icon-fridge', 1, 'https://salt.tikicdn.com/cache/280x280/ts/product/07/fd/5c/926d3504582fe14233699b20b30eae52.jpg', 1);
+INSERT INTO `category` VALUES (7, 'Nhà cửa đời sống', 'icon-fridge', 1, 'https://salt.tikicdn.com/cache/280x280/ts/product/57/af/35/f3b45e62448dbbd0da40120e48ec9caf.png', 1);
+INSERT INTO `category` VALUES (8, 'Hàng tiêu dùng', 'icon-fridge', 1, 'https://salt.tikicdn.com/ts/category/f6/42/49/6cd7598ae44e5794f39acd16acf71ad9.png', 1);
+INSERT INTO `category` VALUES (9, 'Đồ chơi, Mẹ & Bé', 'icon-fridge', 1, 'https://salt.tikicdn.com/cache/280x280/ts/product/d9/bb/5c/3a1cddcf76ed698337fedec5f57e4d56.jpg', 1);
+INSERT INTO `category` VALUES (10, 'Làm đẹp - Sức khoẻ', 'icon-fridge', 2, NULL, 1);
+INSERT INTO `category` VALUES (11, 'Thời trang - Phụ Kiện', 'icon-fridge', 2, NULL, 1);
+INSERT INTO `category` VALUES (12, 'Thể thao - Dã ngoại', 'icon-fridge', 2, NULL, 1);
+INSERT INTO `category` VALUES (13, 'Xe máy, ô tô, xe đạp', 'icon-fridge', 2, NULL, 1);
+INSERT INTO `category` VALUES (14, 'Hàng quốc tế', 'icon-fridge', 1, 'https://salt.tikicdn.com/ts/category/9d/ba/6f/0c85993f0436f73cdfbababda1dc5595.png', 1);
+INSERT INTO `category` VALUES (15, 'Sách, VPP & Quà tặng', 'icon-fridge', 2, NULL, 1);
+INSERT INTO `category` VALUES (16, 'Voucher - Dịch vụ - Thẻ cào', 'icon-fridge', 2, NULL, 1);
+INSERT INTO `category` VALUES (20, 'Thể thao', NULL, 2, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1624977739129-logo.d81f8f6f.png', 2);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for follow_shop
+-- ----------------------------
+DROP TABLE IF EXISTS `follow_shop`;
+CREATE TABLE `follow_shop` (
+  `shop_id` int NOT NULL,
+  `user_id` varchar(36) NOT NULL,
+  `created_at` timestamp(6) NULL DEFAULT CURRENT_TIMESTAMP(6),
+  PRIMARY KEY (`shop_id`,`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Records of follow_shop
+-- ----------------------------
+BEGIN;
+INSERT INTO `follow_shop` VALUES (1, '61d6d84b-d713-4e3f-a562-50b6d8272387', '2021-07-03 00:18:54.835434');
+INSERT INTO `follow_shop` VALUES (3, '61d6d84b-d713-4e3f-a562-50b6d8272387', '2021-07-03 08:22:23.857841');
+INSERT INTO `follow_shop` VALUES (3, 'f5296ad9-1f0f-4e55-bbde-4f69801ae634', '2021-06-27 00:41:17.254167');
 COMMIT;
 
 -- ----------------------------
@@ -90,7 +130,7 @@ CREATE TABLE `image` (
   `item_model_id` varchar(36) DEFAULT NULL,
   `is_deleted` int DEFAULT '2',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of image
@@ -131,6 +171,34 @@ INSERT INTO `image` VALUES (32, 'https://vitaminspy2.sgp1.digitaloceanspaces.com
 INSERT INTO `image` VALUES (33, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1622275605304-aaaa.jpeg', '1f6ac17d-4e47-4ae2-9a4c-644afba3cd3e', NULL, 2);
 INSERT INTO `image` VALUES (34, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1622365608497-Bo%CC%A3%CC%82%20Bo%CC%81ng%20Ro%CC%82%CC%80ng%2020%20Bi%20%28%20Gia%CC%81%204%20500%20000%20%20vn%C4%91%20%29%20-%20Gia%CC%89m%20Co%CC%80n%203%20800%20000%20vn%C4%91%20.jpeg', '62dccba9-7589-4712-b834-e2bbba653e3c', NULL, 2);
 INSERT INTO `image` VALUES (35, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1622365608501-Bo%CC%A3%CC%82%20Lo%CC%9B%20%20%28%20Gia%CC%81%20_%20Lie%CC%82n%20He%CC%A3%CC%82%20%29%20.jpeg', '62dccba9-7589-4712-b834-e2bbba653e3c', NULL, 2);
+INSERT INTO `image` VALUES (36, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1623999786983-1616072794795-101014738.jpeg', 'edbd40b7-7ce7-4939-a5ab-43b7ce9137de', NULL, 2);
+INSERT INTO `image` VALUES (37, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1623999786984-1616072980470-554228461.jpeg', 'edbd40b7-7ce7-4939-a5ab-43b7ce9137de', NULL, 2);
+INSERT INTO `image` VALUES (38, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1623999787032-1616421703196-788569954.jpeg', 'edbd40b7-7ce7-4939-a5ab-43b7ce9137de', NULL, 2);
+INSERT INTO `image` VALUES (39, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1624763305323-1620874734323-516437295.jpeg', '152a17c0-49a5-44e5-9435-1d0b19650df9', NULL, 2);
+INSERT INTO `image` VALUES (40, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625239728749-1617509309768-521481848.jpeg', '0613a8f7-c5e6-4c34-8879-c2da1929a3b2', NULL, 2);
+INSERT INTO `image` VALUES (41, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625239734573-1617509309768-521481848.jpeg', '9ac608c6-4828-49fe-a859-0fd52889d469', NULL, 2);
+INSERT INTO `image` VALUES (42, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625239925783-1617509309768-521481848.jpeg', '347798b1-8da6-4d39-b49e-ba6dee0ce03e', NULL, 2);
+INSERT INTO `image` VALUES (43, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625240007378-1617509309768-521481848.jpeg', '129bcd3c-d273-478b-b997-01575618d478', NULL, 2);
+INSERT INTO `image` VALUES (44, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625240459356-1617509309768-521481848.jpeg', '79998599-a089-41de-83d6-c9e0520fe6ab', NULL, 2);
+INSERT INTO `image` VALUES (45, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625240540907-1617509309768-521481848.jpeg', '08b6c722-e199-4870-96cc-a1c918c93e41', NULL, 2);
+INSERT INTO `image` VALUES (46, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625240544065-1617509309768-521481848.jpeg', '575e3ac1-864b-47de-b808-57d6edb143f2', NULL, 2);
+INSERT INTO `image` VALUES (47, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625241263058-1617509309768-521481848.jpeg', '70b85ba1-8f20-4dcb-bad4-cad726b4bda8', NULL, 2);
+INSERT INTO `image` VALUES (48, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625241315462-1617509309768-521481848.jpeg', 'faf0f3ca-fd8a-4382-9183-da3d827e4779', NULL, 2);
+INSERT INTO `image` VALUES (49, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625241364251-1617509309768-521481848.jpeg', 'fd2eaaff-b3c7-47fc-b44b-d8d10cfc0ee7', NULL, 2);
+INSERT INTO `image` VALUES (50, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625241369612-1617509309768-521481848.jpeg', '381079a0-158b-474d-9bbc-90a3a4f86178', NULL, 2);
+INSERT INTO `image` VALUES (51, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625241751713-1617509309768-521481848.jpeg', 'b3e4c341-f219-40cd-8934-a6ccde833c98', NULL, 2);
+INSERT INTO `image` VALUES (52, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625242465714-1616641367216-103795626.jpeg', 'faaa9650-2f1d-46f7-9182-2517889bfbad', NULL, 2);
+INSERT INTO `image` VALUES (53, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625242488233-1616641367216-103795626.jpeg', 'c2b447a4-9a6d-444a-b315-7d55ad016a04', NULL, 2);
+INSERT INTO `image` VALUES (54, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625242510351-1616641367216-103795626.jpeg', 'c8732881-13e2-4db7-b9f5-0ca1c7b47870', NULL, 2);
+INSERT INTO `image` VALUES (55, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625242813088-1616641367216-103795626.jpeg', '3fd9e8bd-b383-4c29-912a-a4d56dcec412', NULL, 2);
+INSERT INTO `image` VALUES (56, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625253547484-1615823040522-137311483.jpeg', 'c25c379a-114f-47ea-8bda-8922cbc6588b', NULL, 2);
+INSERT INTO `image` VALUES (57, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625274997491-samsung-galaxy-a32-4g-thumb-tim-600x600-600x600.jpeg', '642c0f6d-e777-4997-861f-ef0c39ed3422', NULL, 2);
+INSERT INTO `image` VALUES (58, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625275580706-1616072980470-554228461.jpeg', '343c94fb-4493-4e44-a232-9ceceee94c22', NULL, 2);
+INSERT INTO `image` VALUES (59, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625275580707-1616641626151-645139461.jpeg', '343c94fb-4493-4e44-a232-9ceceee94c22', NULL, 2);
+INSERT INTO `image` VALUES (60, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625275580715-1617938595428-385248093.jpeg', '343c94fb-4493-4e44-a232-9ceceee94c22', NULL, 2);
+INSERT INTO `image` VALUES (61, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625275900015-1615823040522-137311483.jpeg', '1a3adbb3-527a-4dd6-b5c6-8ea4be65dd89', NULL, 2);
+INSERT INTO `image` VALUES (62, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625275900016-1616056390195-293319531.jpeg', '1a3adbb3-527a-4dd6-b5c6-8ea4be65dd89', NULL, 2);
+INSERT INTO `image` VALUES (63, 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625276156853-noi-chien-philips-airfryer-hd974590-1.jpeg', 'a526900e-bddd-499d-93df-ec1a5f5a5638', NULL, 2);
 COMMIT;
 
 -- ----------------------------
@@ -150,6 +218,7 @@ CREATE TABLE `item` (
   `short_description` text,
   `description` text,
   `category_id` int DEFAULT NULL,
+  `total_rate` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -157,12 +226,11 @@ CREATE TABLE `item` (
 -- Records of item
 -- ----------------------------
 BEGIN;
-INSERT INTO `item` VALUES ('038deaa0-13da-4a8c-a6c2-a50336f9728c', 5, 'Mug', NULL, 1, NULL, 'Coc', 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1621436994263-1620398507874-411599284.jpeg', 36000, NULL, NULL, 1);
-INSERT INTO `item` VALUES ('1f6ac17d-4e47-4ae2-9a4c-644afba3cd3e', 3, 'Iphone 11', NULL, 1, NULL, 'asd', 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1622275605304-aaaa.jpeg', NULL, NULL, NULL, 1);
-INSERT INTO `item` VALUES ('2d566b9f-c0bd-47dd-9e21-7bbaf8ae509f', 1, 'Áo thun Adidas', NULL, 1, NULL, 'Aothun2', 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1621435411309-1616421703196-788569954.jpeg', 36000, 'Áo thun mang cá tính năng động trẻ trung, thần thái riêng biệt.\n\nĐịnh hình phong cách tươi mới, năng động hiện đại trẻ trung.\n\nSản phẩm dành cho nhiều lứa tuổi, có thể mặc đi bất cứ nơi đâu và lúc nào.\n\nChất liệu cao cấp mang lại cảm giác dễ chịu vô cùng, tự tin xuống phố đi làm.', 'Áo thun mang cá tính năng động trẻ trung, thần thái riêng biệt.\n\nĐịnh hình phong cách tươi mới, năng động hiện đại trẻ trung.\n\nSản phẩm dành cho nhiều lứa tuổi, có thể mặc đi bất cứ nơi đâu và lúc nào.\n\nChất liệu cao cấp mang lại cảm giác dễ chịu vô cùng, tự tin xuống phố đi làm.', 11);
-INSERT INTO `item` VALUES ('4adf8d96-4ca3-45d6-91b3-0e37e50a004f', 1, 'Áo thun Unisex N7 Basic Tee phông trơn ', NULL, 1, NULL, 'Sanpham1', 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1621163746317-1615823040522-137311483.jpeg', 3432000, NULL, NULL, 11);
-INSERT INTO `item` VALUES ('4d013339-21d0-4000-902f-dc7c65e0778d', 1, 'Áo rét thu đông', NULL, 1, NULL, '2323', 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1621435585609-1615823040522-137311483.jpeg', 30000, NULL, NULL, 11);
-INSERT INTO `item` VALUES ('62dccba9-7589-4712-b834-e2bbba653e3c', 3, 'Bộ bóng bàn', NULL, NULL, NULL, 'Iphone11', 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1622365608497-Bo%CC%A3%CC%82%20Bo%CC%81ng%20Ro%CC%82%CC%80ng%2020%20Bi%20%28%20Gia%CC%81%204%20500%20000%20%20vn%C4%91%20%29%20-%20Gia%CC%89m%20Co%CC%80n%203%20800%20000%20vn%C4%91%20.jpeg', NULL, NULL, NULL, 1);
+INSERT INTO `item` VALUES ('1a3adbb3-527a-4dd6-b5c6-8ea4be65dd89', 6, 'Áo mùa thu cho nam', NULL, NULL, NULL, 'ao', 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625275900015-1615823040522-137311483.jpeg', NULL, NULL, NULL, 11, NULL);
+INSERT INTO `item` VALUES ('343c94fb-4493-4e44-a232-9ceceee94c22', 3, 'Áo nữ', NULL, NULL, NULL, 'quanao', 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625275580706-1616072980470-554228461.jpeg', NULL, NULL, NULL, 11, NULL);
+INSERT INTO `item` VALUES ('642c0f6d-e777-4997-861f-ef0c39ed3422', 3, 'Samsung A32', NULL, NULL, NULL, 'samsung', 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625274997491-samsung-galaxy-a32-4g-thumb-tim-600x600-600x600.jpeg', NULL, NULL, NULL, 1, NULL);
+INSERT INTO `item` VALUES ('a526900e-bddd-499d-93df-ec1a5f5a5638', 3, 'Nồi chiên không dầu', NULL, NULL, NULL, 'noichienkhongdau', 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625276156853-noi-chien-philips-airfryer-hd974590-1.jpeg', NULL, NULL, NULL, 6, NULL);
+INSERT INTO `item` VALUES ('c25c379a-114f-47ea-8bda-8922cbc6588b', 3, 'Iphone11', NULL, NULL, NULL, 'aaa', 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625253547484-1615823040522-137311483.jpeg', NULL, NULL, NULL, 1, '4');
 COMMIT;
 
 -- ----------------------------
@@ -185,36 +253,17 @@ CREATE TABLE `item_model` (
 -- Records of item_model
 -- ----------------------------
 BEGIN;
-INSERT INTO `item_model` VALUES ('02813d1a-31d8-4fd3-949b-bbcf772f40a2', '2342', NULL, 0, '32', NULL, 234, '4d013339-21d0-4000-902f-dc7c65e0778d');
-INSERT INTO `item_model` VALUES ('06117b5a-5bce-4c65-93fb-9c4f811837db', 'RedX7', NULL, 0, '10000000', NULL, 132, '2d566b9f-c0bd-47dd-9e21-7bbaf8ae509f');
-INSERT INTO `item_model` VALUES ('145bdf1b-a9dd-4d05-8ac3-b1cf87108552', 'red-XL', NULL, 0, '12', NULL, 12, '4adf8d96-4ca3-45d6-91b3-0e37e50a004f');
-INSERT INTO `item_model` VALUES ('206b7817-9e8c-4b1b-b814-3e393d2d494b', 'RedX6', NULL, 0, '13', NULL, 132, '2d566b9f-c0bd-47dd-9e21-7bbaf8ae509f');
-INSERT INTO `item_model` VALUES ('22fc802c-88ee-4220-a765-65c9128ebcb2', '543', NULL, 0, '15', NULL, 4234, '038deaa0-13da-4a8c-a6c2-a50336f9728c');
-INSERT INTO `item_model` VALUES ('289fb150-b1f7-4942-8dee-22fccfb2fe9a', 'RedX', NULL, 0, '10000000', NULL, 312, '2d566b9f-c0bd-47dd-9e21-7bbaf8ae509f');
-INSERT INTO `item_model` VALUES ('3720a831-c3d2-436a-bf51-48d61ccf11c6', 'black-XL', NULL, 0, '32', NULL, 232, '4adf8d96-4ca3-45d6-91b3-0e37e50a004f');
-INSERT INTO `item_model` VALUES ('3f8684b7-e33a-4483-8165-0b33fa5197e5', 'asd', NULL, 0, '10000000', NULL, 2, '1f6ac17d-4e47-4ae2-9a4c-644afba3cd3e');
-INSERT INTO `item_model` VALUES ('4c1b9537-449b-45dc-bbc1-746bfa3bde26', '34', NULL, 0, '10000000', NULL, 34, '83f669ea-31c0-4eb1-865c-16d735747fcb');
-INSERT INTO `item_model` VALUES ('5563ded3-3634-41b9-82ad-b7ae9b82bf53', 'RedX5', NULL, 0, '10000000', NULL, 13, '2d566b9f-c0bd-47dd-9e21-7bbaf8ae509f');
-INSERT INTO `item_model` VALUES ('709d962c-78be-4d63-b43d-0a7ba2392200', NULL, NULL, 0, '10000000', NULL, NULL, '273f988f-1fc4-427b-a32d-e0566f854605');
-INSERT INTO `item_model` VALUES ('77bc717f-f99c-4e84-bd08-5b8e166978dd', 'RedX2', NULL, 0, '10000000', NULL, 1234, '2d566b9f-c0bd-47dd-9e21-7bbaf8ae509f');
-INSERT INTO `item_model` VALUES ('7a79a0ea-07ba-4fa1-85d7-c99d080a6ad7', 'RedX7', NULL, 0, '10000000', NULL, 13, '2d566b9f-c0bd-47dd-9e21-7bbaf8ae509f');
-INSERT INTO `item_model` VALUES ('7f40e289-4cd1-48f9-b7ab-9838730f3064', NULL, NULL, 0, '1323232323', NULL, NULL, '2d566b9f-c0bd-47dd-9e21-7bbaf8ae509f');
-INSERT INTO `item_model` VALUES ('87cb3e1d-48d5-4d69-a97b-8ebb3f211d80', 'black-XXL', NULL, 0, '12', NULL, 3232, '4adf8d96-4ca3-45d6-91b3-0e37e50a004f');
-INSERT INTO `item_model` VALUES ('8a6fbd6d-fcfb-4967-9cdb-7bb34f06f0c6', '24234', NULL, 0, '23', NULL, 234, '4d013339-21d0-4000-902f-dc7c65e0778d');
-INSERT INTO `item_model` VALUES ('99b38dee-1a59-41f3-899d-2ce45b088105', 'RedX', NULL, 0, '10000000', NULL, 123, '2d566b9f-c0bd-47dd-9e21-7bbaf8ae509f');
-INSERT INTO `item_model` VALUES ('9a4ae6dd-c1bf-4e92-b455-96329400b59e', '452', NULL, 0, '12', NULL, 133, '038deaa0-13da-4a8c-a6c2-a50336f9728c');
-INSERT INTO `item_model` VALUES ('a7828c35-56b0-4397-8dd2-a3b1500097b0', 'red-XXL', NULL, 0, '12', NULL, 23, '4adf8d96-4ca3-45d6-91b3-0e37e50a004f');
-INSERT INTO `item_model` VALUES ('af930639-9997-4386-83e6-e7704f8a74f7', 'RedX', NULL, 0, '12', NULL, 123, '2d566b9f-c0bd-47dd-9e21-7bbaf8ae509f');
-INSERT INTO `item_model` VALUES ('b83e77ec-d4e7-4f4b-b453-5e982d5058d6', 'Iphone11', NULL, 0, '12000000', NULL, 1232332, '62dccba9-7589-4712-b834-e2bbba653e3c');
-INSERT INTO `item_model` VALUES ('c2d3f97c-9d71-4a30-8cfe-0b7c158a3a7c', 'black-M', NULL, 0, '34', NULL, 232, '4adf8d96-4ca3-45d6-91b3-0e37e50a004f');
-INSERT INTO `item_model` VALUES ('c35bd239-3b07-490d-b41d-06c1a500d9ac', '123', NULL, 0, '12', NULL, 34, '409af33e-85f8-4d04-9a49-facde2c54e54');
-INSERT INTO `item_model` VALUES ('c7f049f4-d111-4ef5-b121-0cbf34eeab51', '4234', NULL, 0, '32', NULL, 423, '4d013339-21d0-4000-902f-dc7c65e0778d');
-INSERT INTO `item_model` VALUES ('ce0f4624-2d5d-4a48-ae62-399662a9c95f', 'RedX7', NULL, 0, '13', NULL, 132, '2d566b9f-c0bd-47dd-9e21-7bbaf8ae509f');
-INSERT INTO `item_model` VALUES ('d515b7c4-5341-4bee-984e-0258f7420343', 'red-M', NULL, 0, '13', NULL, 34, '4adf8d96-4ca3-45d6-91b3-0e37e50a004f');
-INSERT INTO `item_model` VALUES ('da252b21-5912-4872-8492-472d8618d708', 'RedX3', NULL, 0, '13', NULL, 23, '2d566b9f-c0bd-47dd-9e21-7bbaf8ae509f');
-INSERT INTO `item_model` VALUES ('e083a80e-4fdb-44d8-ad71-ceb319fef854', NULL, NULL, 0, '1323232323', NULL, NULL, 'e5c7fea2-1f1f-4131-a102-971ef86bfacf');
-INSERT INTO `item_model` VALUES ('e75ec072-8fb0-4f96-8ec9-5feb0f103568', NULL, NULL, 0, '1323232323', NULL, NULL, '2d566b9f-c0bd-47dd-9e21-7bbaf8ae509f');
-INSERT INTO `item_model` VALUES ('ff9fe768-345b-4279-8ada-6df2b1c72190', '23424', NULL, 0, '14', NULL, 1234, '4d013339-21d0-4000-902f-dc7c65e0778d');
+INSERT INTO `item_model` VALUES ('34b7dede-fe6b-421d-922e-0a6705d39c23', 'aaa', NULL, 0, '1000000', NULL, 123, '642c0f6d-e777-4997-861f-ef0c39ed3422');
+INSERT INTO `item_model` VALUES ('590fad42-b1df-4613-98b9-82f4758a02d7', 'd', NULL, 0, '1400000', NULL, 1, '343c94fb-4493-4e44-a232-9ceceee94c22');
+INSERT INTO `item_model` VALUES ('59d90ef4-288d-4265-91c6-efd5983f8ae9', 'a', NULL, 0, '1000000', NULL, 123, '343c94fb-4493-4e44-a232-9ceceee94c22');
+INSERT INTO `item_model` VALUES ('78c1ba37-30ad-42ae-81d9-4473ca09646d', 'noichienkhongdau', NULL, 0, '120000000', NULL, 120, 'a526900e-bddd-499d-93df-ec1a5f5a5638');
+INSERT INTO `item_model` VALUES ('7dedc5df-7d46-430e-9c9b-97b8accd6bdd', 'aaa', NULL, 0, '1200000', NULL, 123, '642c0f6d-e777-4997-861f-ef0c39ed3422');
+INSERT INTO `item_model` VALUES ('9d972086-63c1-4452-b980-edd235907d87', 'ao', NULL, 0, '12000000', NULL, 12000000, '1a3adbb3-527a-4dd6-b5c6-8ea4be65dd89');
+INSERT INTO `item_model` VALUES ('ba97579c-4f95-46c1-9b7e-62319f2ec9fc', 'b', NULL, 0, '1300000', NULL, 123, '343c94fb-4493-4e44-a232-9ceceee94c22');
+INSERT INTO `item_model` VALUES ('bf9faa1f-79b6-41af-8ef9-41ee0dddec76', 'vvv', NULL, 0, '1300000', NULL, 123, '642c0f6d-e777-4997-861f-ef0c39ed3422');
+INSERT INTO `item_model` VALUES ('c950c39c-7ff6-498d-9503-7850297d53a5', 'c', NULL, 0, '1200000', NULL, 143, '343c94fb-4493-4e44-a232-9ceceee94c22');
+INSERT INTO `item_model` VALUES ('d1e1289c-1fb7-4b98-96d7-3f8b25af55f1', 'aaa', NULL, 0, '120000', NULL, 31, 'c25c379a-114f-47ea-8bda-8922cbc6588b');
+INSERT INTO `item_model` VALUES ('f3dd3a29-ca07-4c57-b3b6-b80a7479e11d', 'xxx', NULL, 0, '1500000', NULL, 32, '642c0f6d-e777-4997-861f-ef0c39ed3422');
 COMMIT;
 
 -- ----------------------------
@@ -232,54 +281,106 @@ CREATE TABLE `item_model_varian` (
 -- Records of item_model_varian
 -- ----------------------------
 BEGIN;
-INSERT INTO `item_model_varian` VALUES ('02813d1a-31d8-4fd3-949b-bbcf772f40a2', 2, 'blue');
-INSERT INTO `item_model_varian` VALUES ('02813d1a-31d8-4fd3-949b-bbcf772f40a2', 6, 'vải');
-INSERT INTO `item_model_varian` VALUES ('06117b5a-5bce-4c65-93fb-9c4f811837db', 2, 'Yellow');
-INSERT INTO `item_model_varian` VALUES ('06117b5a-5bce-4c65-93fb-9c4f811837db', 5, 'L');
-INSERT INTO `item_model_varian` VALUES ('145bdf1b-a9dd-4d05-8ac3-b1cf87108552', 2, 'red');
-INSERT INTO `item_model_varian` VALUES ('145bdf1b-a9dd-4d05-8ac3-b1cf87108552', 5, 'XL');
-INSERT INTO `item_model_varian` VALUES ('206b7817-9e8c-4b1b-b814-3e393d2d494b', 2, 'Yellow');
-INSERT INTO `item_model_varian` VALUES ('206b7817-9e8c-4b1b-b814-3e393d2d494b', 5, 'X');
-INSERT INTO `item_model_varian` VALUES ('22fc802c-88ee-4220-a765-65c9128ebcb2', 2, 'blue');
-INSERT INTO `item_model_varian` VALUES ('289fb150-b1f7-4942-8dee-22fccfb2fe9a', 2, 'blue');
-INSERT INTO `item_model_varian` VALUES ('289fb150-b1f7-4942-8dee-22fccfb2fe9a', 5, 'X');
-INSERT INTO `item_model_varian` VALUES ('3720a831-c3d2-436a-bf51-48d61ccf11c6', 2, 'black');
-INSERT INTO `item_model_varian` VALUES ('3720a831-c3d2-436a-bf51-48d61ccf11c6', 5, 'XL');
-INSERT INTO `item_model_varian` VALUES ('4c1b9537-449b-45dc-bbc1-746bfa3bde26', 4, 'a');
-INSERT INTO `item_model_varian` VALUES ('5563ded3-3634-41b9-82ad-b7ae9b82bf53', 2, 'Red');
-INSERT INTO `item_model_varian` VALUES ('5563ded3-3634-41b9-82ad-b7ae9b82bf53', 5, 'XL');
-INSERT INTO `item_model_varian` VALUES ('77bc717f-f99c-4e84-bd08-5b8e166978dd', 2, 'Red');
-INSERT INTO `item_model_varian` VALUES ('77bc717f-f99c-4e84-bd08-5b8e166978dd', 5, 'L');
-INSERT INTO `item_model_varian` VALUES ('7a79a0ea-07ba-4fa1-85d7-c99d080a6ad7', 2, 'Yellow');
-INSERT INTO `item_model_varian` VALUES ('7a79a0ea-07ba-4fa1-85d7-c99d080a6ad7', 5, 'XL');
-INSERT INTO `item_model_varian` VALUES ('7f40e289-4cd1-48f9-b7ab-9838730f3064', 2, 'blue');
-INSERT INTO `item_model_varian` VALUES ('7f40e289-4cd1-48f9-b7ab-9838730f3064', 5, 'XL');
-INSERT INTO `item_model_varian` VALUES ('87cb3e1d-48d5-4d69-a97b-8ebb3f211d80', 2, 'black');
-INSERT INTO `item_model_varian` VALUES ('87cb3e1d-48d5-4d69-a97b-8ebb3f211d80', 5, 'XXL');
-INSERT INTO `item_model_varian` VALUES ('8a6fbd6d-fcfb-4967-9cdb-7bb34f06f0c6', 2, 'blue');
-INSERT INTO `item_model_varian` VALUES ('8a6fbd6d-fcfb-4967-9cdb-7bb34f06f0c6', 6, 'jean');
-INSERT INTO `item_model_varian` VALUES ('99b38dee-1a59-41f3-899d-2ce45b088105', 2, 'Red');
-INSERT INTO `item_model_varian` VALUES ('99b38dee-1a59-41f3-899d-2ce45b088105', 5, 'X');
-INSERT INTO `item_model_varian` VALUES ('9a4ae6dd-c1bf-4e92-b455-96329400b59e', 2, 'white');
-INSERT INTO `item_model_varian` VALUES ('a7828c35-56b0-4397-8dd2-a3b1500097b0', 2, 'red');
-INSERT INTO `item_model_varian` VALUES ('a7828c35-56b0-4397-8dd2-a3b1500097b0', 5, 'XXL');
-INSERT INTO `item_model_varian` VALUES ('af930639-9997-4386-83e6-e7704f8a74f7', 2, 'blue');
-INSERT INTO `item_model_varian` VALUES ('af930639-9997-4386-83e6-e7704f8a74f7', 5, 'L');
-INSERT INTO `item_model_varian` VALUES ('c2d3f97c-9d71-4a30-8cfe-0b7c158a3a7c', 2, 'black');
-INSERT INTO `item_model_varian` VALUES ('c2d3f97c-9d71-4a30-8cfe-0b7c158a3a7c', 5, 'M');
-INSERT INTO `item_model_varian` VALUES ('c35bd239-3b07-490d-b41d-06c1a500d9ac', 3, '23');
-INSERT INTO `item_model_varian` VALUES ('c7f049f4-d111-4ef5-b121-0cbf34eeab51', 2, 'red');
-INSERT INTO `item_model_varian` VALUES ('c7f049f4-d111-4ef5-b121-0cbf34eeab51', 6, 'vải');
-INSERT INTO `item_model_varian` VALUES ('ce0f4624-2d5d-4a48-ae62-399662a9c95f', 2, 'Yellow');
-INSERT INTO `item_model_varian` VALUES ('ce0f4624-2d5d-4a48-ae62-399662a9c95f', 5, 'M');
-INSERT INTO `item_model_varian` VALUES ('d515b7c4-5341-4bee-984e-0258f7420343', 2, 'red');
-INSERT INTO `item_model_varian` VALUES ('d515b7c4-5341-4bee-984e-0258f7420343', 5, 'M');
-INSERT INTO `item_model_varian` VALUES ('da252b21-5912-4872-8492-472d8618d708', 2, 'Red');
-INSERT INTO `item_model_varian` VALUES ('da252b21-5912-4872-8492-472d8618d708', 5, 'M');
-INSERT INTO `item_model_varian` VALUES ('e75ec072-8fb0-4f96-8ec9-5feb0f103568', 2, 'blue');
-INSERT INTO `item_model_varian` VALUES ('e75ec072-8fb0-4f96-8ec9-5feb0f103568', 5, 'M');
-INSERT INTO `item_model_varian` VALUES ('ff9fe768-345b-4279-8ada-6df2b1c72190', 2, 'red');
-INSERT INTO `item_model_varian` VALUES ('ff9fe768-345b-4279-8ada-6df2b1c72190', 6, 'jean');
+INSERT INTO `item_model_varian` VALUES ('34b7dede-fe6b-421d-922e-0a6705d39c23', 2, 'red');
+INSERT INTO `item_model_varian` VALUES ('34b7dede-fe6b-421d-922e-0a6705d39c23', 8, '16');
+INSERT INTO `item_model_varian` VALUES ('590fad42-b1df-4613-98b9-82f4758a02d7', 7, 'Xanh');
+INSERT INTO `item_model_varian` VALUES ('590fad42-b1df-4613-98b9-82f4758a02d7', 9, 'Bình thường');
+INSERT INTO `item_model_varian` VALUES ('59d90ef4-288d-4265-91c6-efd5983f8ae9', 7, 'Đỏ');
+INSERT INTO `item_model_varian` VALUES ('59d90ef4-288d-4265-91c6-efd5983f8ae9', 9, 'Tốt');
+INSERT INTO `item_model_varian` VALUES ('7dedc5df-7d46-430e-9c9b-97b8accd6bdd', 2, 'red');
+INSERT INTO `item_model_varian` VALUES ('7dedc5df-7d46-430e-9c9b-97b8accd6bdd', 8, '32');
+INSERT INTO `item_model_varian` VALUES ('ba97579c-4f95-46c1-9b7e-62319f2ec9fc', 7, 'Đỏ');
+INSERT INTO `item_model_varian` VALUES ('ba97579c-4f95-46c1-9b7e-62319f2ec9fc', 9, 'Bình thường');
+INSERT INTO `item_model_varian` VALUES ('bf9faa1f-79b6-41af-8ef9-41ee0dddec76', 2, 'black');
+INSERT INTO `item_model_varian` VALUES ('bf9faa1f-79b6-41af-8ef9-41ee0dddec76', 8, '16');
+INSERT INTO `item_model_varian` VALUES ('c950c39c-7ff6-498d-9503-7850297d53a5', 7, 'Xanh');
+INSERT INTO `item_model_varian` VALUES ('c950c39c-7ff6-498d-9503-7850297d53a5', 9, 'Tốt');
+INSERT INTO `item_model_varian` VALUES ('f3dd3a29-ca07-4c57-b3b6-b80a7479e11d', 2, 'black');
+INSERT INTO `item_model_varian` VALUES ('f3dd3a29-ca07-4c57-b3b6-b80a7479e11d', 8, '32');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for order
+-- ----------------------------
+DROP TABLE IF EXISTS `order`;
+CREATE TABLE `order` (
+  `id` varchar(36) NOT NULL,
+  `user_id` varchar(36) DEFAULT NULL,
+  `shop_id` int DEFAULT NULL,
+  `total_value` bigint DEFAULT NULL,
+  `status` int DEFAULT '1',
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp(6) NULL DEFAULT CURRENT_TIMESTAMP(6),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Records of order
+-- ----------------------------
+BEGIN;
+INSERT INTO `order` VALUES ('5912b4c9-6928-493f-aa2a-e560352eb618', '61d6d84b-d713-4e3f-a562-50b6d8272387', 3, 120000, 2, NULL, '2021-07-03 08:12:49.977942');
+INSERT INTO `order` VALUES ('f3b0fa58-917a-442e-8943-af3e174f8e7b', '61d6d84b-d713-4e3f-a562-50b6d8272387', 3, 1400000, 1, NULL, '2021-07-03 08:28:28.111016');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for order_item
+-- ----------------------------
+DROP TABLE IF EXISTS `order_item`;
+CREATE TABLE `order_item` (
+  `order_id` varchar(36) NOT NULL,
+  `item_model_id` varchar(36) NOT NULL,
+  `quantity` int DEFAULT NULL,
+  `unit_price` bigint DEFAULT NULL,
+  PRIMARY KEY (`order_id`,`item_model_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Records of order_item
+-- ----------------------------
+BEGIN;
+INSERT INTO `order_item` VALUES ('5912b4c9-6928-493f-aa2a-e560352eb618', 'd1e1289c-1fb7-4b98-96d7-3f8b25af55f1', 1, 120000);
+INSERT INTO `order_item` VALUES ('f3b0fa58-917a-442e-8943-af3e174f8e7b', '590fad42-b1df-4613-98b9-82f4758a02d7', 2, 1400000);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for review_item
+-- ----------------------------
+DROP TABLE IF EXISTS `review_item`;
+CREATE TABLE `review_item` (
+  `item_id` varchar(36) NOT NULL,
+  `user_id` varchar(36) NOT NULL,
+  `rate` int DEFAULT NULL,
+  `content` text,
+  `created_at` timestamp(6) NULL DEFAULT CURRENT_TIMESTAMP(6),
+  PRIMARY KEY (`item_id`,`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Records of review_item
+-- ----------------------------
+BEGIN;
+INSERT INTO `review_item` VALUES ('c25c379a-114f-47ea-8bda-8922cbc6588b', '61d6d84b-d713-4e3f-a562-50b6d8272387', 4, 'Tuỵet vời', '2021-07-03 08:13:40.710329');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for review_shop
+-- ----------------------------
+DROP TABLE IF EXISTS `review_shop`;
+CREATE TABLE `review_shop` (
+  `shop_id` int NOT NULL,
+  `user_id` varchar(36) NOT NULL,
+  `rate` int DEFAULT NULL,
+  `content` text,
+  `created_at` timestamp(6) NULL DEFAULT CURRENT_TIMESTAMP(6),
+  PRIMARY KEY (`shop_id`,`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Records of review_shop
+-- ----------------------------
+BEGIN;
+INSERT INTO `review_shop` VALUES (3, '61d6d84b-d713-4e3f-a562-50b6d8272387', 5, 'dấd', '2021-06-27 00:39:15.474099');
+INSERT INTO `review_shop` VALUES (3, 'f5296ad9-1f0f-4e55-bbde-4f69801ae634', 1, '12', '2021-06-27 00:41:20.405144');
 COMMIT;
 
 -- ----------------------------
@@ -296,19 +397,23 @@ CREATE TABLE `shop` (
   `name` varchar(255) DEFAULT NULL,
   `createdAt` timestamp(6) NULL DEFAULT CURRENT_TIMESTAMP(6),
   `phone` varchar(255) DEFAULT NULL,
+  `total_rate` varchar(255) DEFAULT '0',
+  `image_advertise` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'https://photos2.vitaminspy.com/datn/static4.jpg',
+  `advertise` int DEFAULT '2',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of shop
 -- ----------------------------
 BEGIN;
-INSERT INTO `shop` VALUES (1, '123', 'trinhngockhang1503@gmail.com', '', '', '$2a$12$AsXYbpCEfqqlyhRCL1SmbOTgFe5friP9/.OwWQZntBFB/seh2Phu.', NULL, '2021-05-15 14:55:27.381048', '84964419119');
-INSERT INTO `shop` VALUES (2, '1233', 'trinhngockhang503@gmail.com', '', '', '$2a$12$V/pGs0ThFGNgd4DMRrRgv.n4dieh1L8bb/.uCXFzxOEhUfyLf/NzS', NULL, '2021-05-15 14:56:27.988489', '84964419111');
-INSERT INTO `shop` VALUES (3, 'khangtn', 'trinhngockhang1501@gmail.com', '', '', '$2a$12$yM/ZciWlGGer9CoGBHk0pOIh6mRuSTxynXXoT/OWG/mdGN1EGP8DG', NULL, '2021-05-15 14:58:03.440349', '84964419113');
-INSERT INTO `shop` VALUES (4, 'eaw', 'trinhngock1hang1503@gmail.com', '', '', '$2a$12$S.LpHIRHn7/wZiUzl3WX6u2cwQThQKflEniLMei5s/7Yv1K9832WO', NULL, '2021-05-15 14:58:57.058026', '84264419119');
-INSERT INTO `shop` VALUES (5, '12', 'trinhngockhang21503@gmail.com', '', '', '$2a$12$eVrxmH3IDcvjA4c7MFDQv.2ipUkWrMpW9DinXkdr/D19aXQ2ipeLu', NULL, '2021-05-19 22:07:57.938122', '84644191191');
-INSERT INTO `shop` VALUES (6, 'khangtn1', 'trinhngockhang15033@gmail.com', '', '', '$2a$12$/DAPkuAbZgUPkMPPgiTUO.V66aGYB2GD7yYkWfQcIW55/KGwh1eZu', NULL, '2021-05-29 09:53:41.014490', '84964419119');
+INSERT INTO `shop` VALUES (1, '123', 'trinhngockhang1503@gmail.com', 'Shop thời tran', 'https://cf.shopee.vn/file/bdade9af41692639e4101b8d5c7a0861_tn', '$2a$12$AsXYbpCEfqqlyhRCL1SmbOTgFe5friP9/.OwWQZntBFB/seh2Phu.', 'Khang Khang', '2021-05-15 14:55:27.381048', '84964419119', '0', 'https://photos2.vitaminspy.com/datn/static4.jpg', 1);
+INSERT INTO `shop` VALUES (2, '1233', 'trinhngockhang503@gmail.com', 'Shop thời tranShop thời tran', 'https://cf.shopee.vn/file/bdade9af41692639e4101b8d5c7a0861_tn', '$2a$12$V/pGs0ThFGNgd4DMRrRgv.n4dieh1L8bb/.uCXFzxOEhUfyLf/NzS', 'Khang Khang', '2021-05-15 14:56:27.988489', '84964419111', '0', 'https://photos2.vitaminspy.com/datn/static4.jpg', 2);
+INSERT INTO `shop` VALUES (3, 'khangtn', 'trinhngockhang1501@gmail.com', '', 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625248171655-1616658646435-764310863.jpeg', '$2a$12$yM/ZciWlGGer9CoGBHk0pOIh6mRuSTxynXXoT/OWG/mdGN1EGP8DG', 'Khang Trinh', '2021-05-15 14:58:03.440349', '84964419113', '3', 'https://vitaminspy2.sgp1.digitaloceanspaces.com/datn/1625251409083-static2.jpeg', 1);
+INSERT INTO `shop` VALUES (4, 'eaw', 'trinhngock1hang1503@gmail.com', '', 'https://cf.shopee.vn/file/bdade9af41692639e4101b8d5c7a0861_tn', '$2a$12$S.LpHIRHn7/wZiUzl3WX6u2cwQThQKflEniLMei5s/7Yv1K9832WO', 'Khang Khang', '2021-05-15 14:58:57.058026', '84264419119', '0', 'https://photos2.vitaminspy.com/datn/static4.jpg', 2);
+INSERT INTO `shop` VALUES (5, '12', 'trinhngockhang21503@gmail.com', '', 'https://cf.shopee.vn/file/bdade9af41692639e4101b8d5c7a0861_tn', '$2a$12$eVrxmH3IDcvjA4c7MFDQv.2ipUkWrMpW9DinXkdr/D19aXQ2ipeLu', 'Khang Khang', '2021-05-19 22:07:57.938122', '84644191191', '0', 'https://photos2.vitaminspy.com/datn/static4.jpg', 2);
+INSERT INTO `shop` VALUES (6, 'khangtn1', 'trinhngockhang15033@gmail.com', '', 'https://cf.shopee.vn/file/bdade9af41692639e4101b8d5c7a0861_tn', '$2a$12$/DAPkuAbZgUPkMPPgiTUO.V66aGYB2GD7yYkWfQcIW55/KGwh1eZu', 'Khang Khang', '2021-05-29 09:53:41.014490', '84964419119', '0', 'https://photos2.vitaminspy.com/datn/static4.jpg', 2);
+INSERT INTO `shop` VALUES (7, 'khangtn2', 'trinhngockhang15031@gmail.com', '', 'https://cf.shopee.vn/file/bdade9af41692639e4101b8d5c7a0861_tn', '$2a$12$OSZnQ0b15qOWhAeFJdHBdeTK.e1me/lrgXy0xJECNPDeRd7h/SdLi', NULL, '2021-06-27 10:06:04.764749', '84964419119', '0', 'https://photos2.vitaminspy.com/datn/static4.jpg', 2);
 COMMIT;
 
 -- ----------------------------
@@ -320,7 +425,7 @@ CREATE TABLE `sub_category` (
   `name` varchar(255) DEFAULT NULL,
   `category_id` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of sub_category
@@ -328,6 +433,17 @@ CREATE TABLE `sub_category` (
 BEGIN;
 INSERT INTO `sub_category` VALUES (1, 'Iphone', 1);
 INSERT INTO `sub_category` VALUES (2, 'Android', 1);
+INSERT INTO `sub_category` VALUES (3, 'Áo thun', 10);
+INSERT INTO `sub_category` VALUES (4, 'Bóng rổ', 17);
+INSERT INTO `sub_category` VALUES (5, 'bóng đá', 17);
+INSERT INTO `sub_category` VALUES (6, 'Phòng khách', 18);
+INSERT INTO `sub_category` VALUES (7, 'phòng ngủ', 18);
+INSERT INTO `sub_category` VALUES (8, 'Bóng đá', 19);
+INSERT INTO `sub_category` VALUES (10, 'Bóng đá', 20);
+INSERT INTO `sub_category` VALUES (11, 'bóng chuyền', 20);
+INSERT INTO `sub_category` VALUES (12, 'Áo nam', 11);
+INSERT INTO `sub_category` VALUES (13, 'Áo nữ', 11);
+INSERT INTO `sub_category` VALUES (14, 'Bếp', 6);
 COMMIT;
 
 -- ----------------------------
@@ -346,6 +462,14 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
+-- Records of user
+-- ----------------------------
+BEGIN;
+INSERT INTO `user` VALUES ('61d6d84b-d713-4e3f-a562-50b6d8272387', 'trinhngockhang1503@gmail.com', 'Khang Trịnh Ngọc', 'https://lh3.googleusercontent.com/a/AATXAJx47VhvLFGmjDK5KqytjchOxTh9iINbyGCP6CVc=s96-c', NULL, '2021-06-23 16:32:06.223365', NULL);
+INSERT INTO `user` VALUES ('f5296ad9-1f0f-4e55-bbde-4f69801ae634', 'khangtn1503@gmail.com', 'Khang Trinh', 'https://lh3.googleusercontent.com/a/AATXAJx47VhvLFGmjDK5KqytjchOxTh9iINbyGCP6CVc=s96-c', NULL, '2021-06-26 17:48:49.357683', NULL);
+COMMIT;
+
+-- ----------------------------
 -- Table structure for varian
 -- ----------------------------
 DROP TABLE IF EXISTS `varian`;
@@ -353,7 +477,7 @@ CREATE TABLE `varian` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of varian
@@ -365,6 +489,9 @@ INSERT INTO `varian` VALUES (3, '123');
 INSERT INTO `varian` VALUES (4, 'Red');
 INSERT INTO `varian` VALUES (5, 'Size');
 INSERT INTO `varian` VALUES (6, 'Material');
+INSERT INTO `varian` VALUES (7, 'Màu sắc');
+INSERT INTO `varian` VALUES (8, 'Ram');
+INSERT INTO `varian` VALUES (9, 'Chất liệu');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

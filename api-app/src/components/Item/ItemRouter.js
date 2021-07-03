@@ -15,6 +15,8 @@ router.post('/model', throwAsNext(controller.getItemModelByVarian));
 router.post('/review', authMiddleware, requireLogin, throwAsNext(controller.reviewItem));
 router.get('/review', throwAsNext(controller.getItemReview));
 
+router.get('/search', throwAsNext(controller.searchItem));
+
 
 router.get('/:id', throwAsNext(controller.getItemDetail));
 

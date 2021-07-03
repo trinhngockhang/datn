@@ -1,7 +1,7 @@
 import * as dbUtil from '../../util/databaseUtil';
 
 export const getCategory = async () => {
-  const sql = 'SELECT * FROM category';
+  const sql = 'SELECT * FROM category where active= 1';
   const camps = await dbUtil.query(sql);
   return camps;
 };

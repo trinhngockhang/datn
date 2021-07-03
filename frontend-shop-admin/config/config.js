@@ -75,64 +75,6 @@ export default defineConfig({
               path: '/',
               redirect: '/list/table-list',
             },
-            // {
-            //   path: '/dashboard',
-            //   name: 'dashboard',
-            //   icon: 'dashboard',
-            //   routes: [
-            //     {
-            //       path: '/',
-            //       redirect: '/dashboard/analysis',
-            //     },
-            //     {
-            //       name: 'analysis',
-            //       icon: 'smile',
-            //       path: '/dashboard/analysis',
-            //       component: './dashboard/analysis',
-            //     },
-            //     {
-            //       name: 'monitor',
-            //       icon: 'smile',
-            //       path: '/dashboard/monitor',
-            //       component: './dashboard/monitor',
-            //     },
-            //     {
-            //       name: 'workplace',
-            //       icon: 'smile',
-            //       path: '/dashboard/workplace',
-            //       component: './dashboard/workplace',
-            //     },
-            //   ],
-            // },
-            // {
-            //   path: '/form',
-            //   icon: 'form',
-            //   name: 'form',
-            //   routes: [
-            //     {
-            //       path: '/',
-            //       redirect: '/form/basic-form',
-            //     },
-            //     {
-            //       name: 'basic-form',
-            //       icon: 'smile',
-            //       path: '/form/basic-form',
-            //       component: './form/basic-form',
-            //     },
-            //     {
-            //       name: 'step-form',
-            //       icon: 'smile',
-            //       path: '/form/step-form',
-            //       component: './form/step-form',
-            //     },
-            //     {
-            //       name: 'advanced-form',
-            //       icon: 'smile',
-            //       path: '/form/advanced-form',
-            //       component: './form/advanced-form',
-            //     },
-            //   ],
-            // },
             {
               path: '/list',
               icon: 'table',
@@ -141,6 +83,12 @@ export default defineConfig({
                 { 
                   path: '/',
                   redirect: '/list/table-list',
+                },
+                {
+                  name: 'Profile',
+                  icon: 'table',
+                  path: '/list/profiles',
+                  component: './list/profiles',
                 },
                 {
                   name: 'All Product',
@@ -154,44 +102,22 @@ export default defineConfig({
                   path: '/list/create-item',
                   component: './list/create-item',
                 },
-                // {
-                //   name: 'Trello',
-                //   icon: 'smile',
-                //   path: '/list/table-list',
-                //   component: './list/trello',
-                // },
-                
-                // {
-                //   name: 'card-list',
-                //   icon: 'smile',
-                //   path: '/list/card-list',
-                //   component: './list/card-list',
-                // },
-              ],
-            },
-            {
-              path: '/list',
-              icon: 'table',
-              name: 'Order',
-              routes: [
-                { 
-                  path: '/',
-                  redirect: '/list/table-list',
-                },
                 {
                   name: 'Manage orders',
                   icon: 'table',
-                  path: '/list/productss',
-                  component: './list/search',
+                  path: '/list/orders',
+                  component: './list/orders',
                 },
                 {
                   name: 'Statistic',
                   icon: 'table',
-                  path: '/list/productsss',
-                  component: './list/search',
+                  path: '/list/statistic',
+                  component: './list/statistic',
                 },
-               
-              ]},
+                
+              ],
+            },
+  
               
             {
               component: '404',
@@ -201,7 +127,6 @@ export default defineConfig({
       ],
     },
   ],
-  // Theme for antd: https://ant.design/docs/react/customize-theme-cn
   theme: {
     'primary-color': defaultSettings.primaryColor,
   },

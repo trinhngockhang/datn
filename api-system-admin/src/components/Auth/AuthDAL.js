@@ -5,7 +5,7 @@ import redisUtil from '../../util/redisUtil';
 import * as common from './common';
 
 export const getUserByUsername = async (username) => {
-  const sql = 'SELECT id,username,password FROM shop WHERE username = ? LIMIT 1';
+  const sql = 'SELECT id,username,password FROM admin WHERE username = ? LIMIT 1';
   return dbUtil.queryOne(sql, [username]);
 };
 export const signUp = async ({ username, passwordHash, name, email, phone }) => {

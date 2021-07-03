@@ -21,11 +21,11 @@ export default function Banners({ containerType }) {
         <Row gutter={30}>
           {
             data.map((banner, index) => <Col key={index} className="gutter-row" span={24} sm={6}>
-            <Link href={process.env.PUBLIC_URL + "#"}>
+            <Link href={process.env.PUBLIC_URL + "/shop/info/"+banner.id}>
               <a className="banner-item">
                 <img
                   src={
-                    banner.image_url
+                    banner.image_advertise
                   }
                   alt="banner"
                 />

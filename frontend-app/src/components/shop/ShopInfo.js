@@ -26,8 +26,11 @@ export default function ShopInfoContent({ shopId }) {
   };
 
   const getDataProduct = async () => {
-    const res = await getAuthen("/shop/" + shopId);
-    setShop(res.data.data);
+    if(shopId){
+      const res = await getAuthen("/shop/" + shopId);
+      setShop(res.data.data);
+    }
+  
   };
 
 

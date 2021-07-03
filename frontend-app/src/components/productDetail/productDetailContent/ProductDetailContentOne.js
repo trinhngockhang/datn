@@ -61,9 +61,9 @@ function ProductDetailContentOne({
     <div className="product-detail-content-one">
       <h3>{data.name}</h3>
       <div className="product-detail-content-one-rate">
-        <Rate disabled defaultValue={4.5} />
+        <Rate disabled defaultValue={0} value={data?.total_rate}/>
         <span className="product-detail-content-one-review-count">
-          - 5 Nhận xét
+          - {data?.reviews?.length} Nhận xét
         </span>
       </div>
       <div className="product-detail-content-one-price">

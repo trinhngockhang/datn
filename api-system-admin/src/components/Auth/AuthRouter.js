@@ -11,11 +11,7 @@ const router = Router();
 router.get('/getme', authMiddleware, requireLogin, throwAsNext(controller.getMe));
 // --- Login ---
 router.post('/login', loginValidator, throwAsNext(controller.login));
-// --- Sign up ---
-router.post('/sign-up', throwAsNext(controller.signUp));
-// --- Refresh Token ---
-router.post('/refresh-token', throwAsNext(controller.refreshToken));
-// registerSubrouter
+
 
 // export
 export default { path, router };

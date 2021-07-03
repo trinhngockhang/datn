@@ -80,7 +80,7 @@ const Login = (props) => {
     console.log(res.code);
     if(res?.code == 0){
       localStorage.setItem('token', res.data.token);
-      window.location = '/list/products';
+      window.location = '/list/category';
     } else {
       alert('Wrong password');
     }

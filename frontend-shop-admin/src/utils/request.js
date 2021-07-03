@@ -56,14 +56,14 @@ const errorHandler = (error) => {
  * 配置request请求时的默认参数
  */
 
-const request = () => {
+const request = (baseUrl) => {
   const token = localStorage.getItem('token');
   return extend({
     errorHandler,
     headers:{
       Authorization: 'Bearer '+ token,
     },
-    prefix: configApi,
+    prefix: baseUrl? baseUrl : configApi,
   });
 }
 export default request;

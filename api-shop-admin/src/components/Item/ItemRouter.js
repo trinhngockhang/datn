@@ -9,8 +9,20 @@ const router = Router();
 // get item
 
 router.get('/', authMiddleware, requireLogin, paginationMiddleware({}), throwAsNext(controller.getItem));
+
+router.get('/shop-name', authMiddleware, requireLogin, paginationMiddleware({}), throwAsNext(controller.getMyName));
 // --- Create item ---
 router.post('/', authMiddleware, requireLogin, throwAsNext(controller.createItem));
+
+
+router.put('/profile', authMiddleware, requireLogin, throwAsNext(controller.updateProfile));
+
+router.put('/avatar', authMiddleware, requireLogin, throwAsNext(controller.updateAvatar));
+
+router.put('/advertise', authMiddleware, requireLogin, throwAsNext(controller.updateAdvertise));
+
+
+router.put('/:id', authMiddleware, requireLogin, throwAsNext(controller.updateItem));
 // registerSubrouter
 
 // export

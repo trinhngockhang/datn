@@ -26,6 +26,7 @@ const UpdateForm = (props) => {
   const [formVarian] = Form.useForm();
 
   useEffect(() => {
+    console.log(current);
     if (current) {
       form.setFieldsValue({
         ...current,
@@ -62,33 +63,20 @@ const UpdateForm = (props) => {
     >
       <Form.Provider
         onFormFinish={(name, info) => {
-          let totalData = {...info.values};
-          const form = info.forms;
-          const keys = Object.keys(form);
-          for(let i = 0; i < keys.length; i++){
-            if(keys[i].includes('varian')){
-              const data = form[`${keys[i]}`].getFieldsValue(true);
-              console.log(data);
-              const dataKey = Object.keys(data);
-              const name = dataKey[0];
-              const number = name.split('-')[2];
-              totalData.varians[number].options = data[`${dataKey[0]}`]; 
-            }
-          }
-          console.log(totalData);
-          onFinish(totalData);
+          console.log(info );
+          onFinish(info.values);
         }}
       >
         <Form form={form} {...formLayout} name="info-form" autoComplete="off">
-          <Form.Item name="_id" fieldKey={['id']}></Form.Item>
-          <Form.Item
+          <Form.Item name="id" fieldKey={['id']}></Form.Item>
+          {/* <Form.Item
             label="Id"
             name={['id']}
             fieldKey={['id']}
             rules={[{ required: true, message: 'Missing id' }]}
           >
             <Input />
-          </Form.Item>
+          </Form.Item> */}
           <Form.Item
             label="Name"
             name={['name']}
@@ -98,6 +86,14 @@ const UpdateForm = (props) => {
             <Input />
           </Form.Item>
           <Form.Item
+            label="Short description"
+            name={['short_description']}
+            fieldKey={['short_description']}
+            rules={[{ required: true, message: 'Missing short_description' }]}
+          >
+            <TextArea placeholder="Description" />
+          </Form.Item>
+          <Form.Item
             label="Description"
             name={['description']}
             fieldKey={['description']}
@@ -105,7 +101,7 @@ const UpdateForm = (props) => {
           >
             <TextArea placeholder="Description" />
           </Form.Item>
-          <Form.Item label="Product type" name={['productType']} fieldKey={['productType']}>
+          {/* <Form.Item label="Product type" name={['productType']} fieldKey={['productType']}>
                 <Input type="text" />
               </Form.Item>
           <Form.Item
@@ -118,18 +114,18 @@ const UpdateForm = (props) => {
               onChange={handleChange}
               defaultActiveFirstOption={true}
             />
-          </Form.Item>
+          </Form.Item> */}
 
           {hasSize == true ? (
             <></>
           ) : (
             <div>
-              <Form.Item label="Default price" name={['defaultPrice']} fieldKey={['defaultPrice']}>
+              {/* <Form.Item label="Default price" name={['defaultPrice']} fieldKey={['defaultPrice']}>
                 <Input type="number" />
               </Form.Item>
               <Form.Item label="Compare price" name={['defaultComparePrice']} fieldKey={['defaultComparePrice']}>
                 <Input type="number" />
-              </Form.Item>
+              </Form.Item> */}
             </div>
           )}
           <Form.List name="sizes">
@@ -279,7 +275,7 @@ const UpdateForm = (props) => {
                     <br />
                   </Space>
                 ))}
-                <Form.Item style={{ width: '42%', margin: 'auto' }}>
+                {/* <Form.Item style={{ width: '42%', margin: 'auto' }}>
                   <Button
                     type="dashed"
                     type="primary"
@@ -289,7 +285,7 @@ const UpdateForm = (props) => {
                   >
                     Add Varian
                   </Button>
-                </Form.Item>
+                </Form.Item> */}
               </>
             )}
           </Form.List>

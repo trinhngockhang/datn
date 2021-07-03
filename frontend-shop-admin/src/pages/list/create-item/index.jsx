@@ -179,6 +179,7 @@ const CreateForm = (props) => {
 
   const createItem = async (finalData, images) => {
     const requestApi = request();
+    const requestImage = request('https://image.k-ecommerce.xyz');
     console.log('FINAL: ', finalData);
     // upload images
     console.log(images);
@@ -186,7 +187,7 @@ const CreateForm = (props) => {
     data.append('name', 'Image Upload');
     images.forEach((image) => data.append('files', image))
     
-    const res = await requestApi('/image/upload', {
+    const res = await requestImage('/image/upload', {
       method: 'POST',
       data,
     });
@@ -196,6 +197,7 @@ const CreateForm = (props) => {
       method: 'POST',
       data: {...finalData, images: res.data},
     });
+    window.location='/list/products';
   };
   const onDrop = (picture) => {
     console.log(picture);

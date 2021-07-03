@@ -172,13 +172,13 @@ function Product({ data, productStyle }) {
         <div className="product-content">
           <Link
             href={process.env.PUBLIC_URL + `/product/[slug]`}
-            as={process.env.PUBLIC_URL + `/product/${data.slug}`}
+            as={process.env.PUBLIC_URL + `/product/${data.id}`}
           >
             <a className="product-name">{data.name}</a>
           </Link>
           <div className="product-rate">
-            <Rate defaultValue={data.rate} disabled />
-            <span className="product-rate-quantity">(06)</span>
+            <Rate defaultValue={data?.total_rate} value={data?.total_rate} disabled />
+            <span className="product-rate-quantity">{data?.reviews?.length}</span>
           </div>
           <div className="product-content__footer">
             <div className="product-content__footer-price">

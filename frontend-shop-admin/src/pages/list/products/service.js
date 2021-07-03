@@ -29,7 +29,7 @@ export async function addRule(params) {
 }
 export async function updateTemplate(params) {
   const requestApi = request();
-  return requestApi('/templates', {
+  return requestApi('/item/'+params.id, {
     method: 'PUT',
     data: { ...params, method: 'update' },
   });
